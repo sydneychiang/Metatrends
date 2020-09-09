@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tweet from '../Components/Tweet';
 import Header from '../Components/Header';
 import RedditBlock from '../Components/RedditBlock';
+import MovieBlock from '../Components/MovieBlock';
 import './Home.css';
 
 
@@ -18,6 +19,7 @@ function Home() {
             <Header />
             <Tweet />
             <RedditBlock />
+            <MovieBlock />
         </div>
     )
 }

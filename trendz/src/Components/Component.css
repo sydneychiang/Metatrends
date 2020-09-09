@@ -1,24 +1,18 @@
 span {
     display: block;
     font-family: "Lora";
-
-
-
 }
 
-#redditBlock{
+.Block{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.reddit {
+.mediaType {
     font-size: 14px;
     color: #669693;
     display: inline-block;
-
-
-
 }
 
 .trendingNum {
@@ -26,17 +20,12 @@ span {
     color: #464745;
     opacity: 90%;
     float: right;
-
-
 }
 
-.subreddit {
+.blockTitle {
     font-size: 20px;
     margin-left: 5%;
     margin-bottom: 0.2em;
-
-
-
 }
 
 .description {
@@ -45,19 +34,19 @@ span {
     padding-bottom: 1.5em;
     display: block;
     margin-left: 5em;
-
-
 }
 
-img {
+.circlePhoto {
     border-radius: 50%;
     width: 4em;
     height: 4em;
     object-fit: cover;
     float: left;
     margin-right: 0.5em;
-
-
 }
 
+.posterPhoto {
+    width: 4em;
+    object-fit: scale-down;
 
+}
