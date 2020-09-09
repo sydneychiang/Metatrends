@@ -1,0 +1,50 @@
+span {
+    display: block;
+    font-family: "Lora";
+
+
+
+}
+
+#redditBlock{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reddit {
+    font-size: 16px;
+    color: #669693;
+    display: inline-block;
+}
+
+.trendingNum {
+    font-size: 10px;
+    color: #464745;
+    opacity: 90%;
+    float: right;
+    display: inline-block;
+
+}
+
+.subreddit {
+    font-size: 20px;
+
+
+}
+
+.description {
+    font-family: "Merriweather";
+    font-size: 14px;
+
+
+}
+
+img {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+    float: left;
+
+}
