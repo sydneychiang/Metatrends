@@ -13,16 +13,18 @@ import '../index.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        marginBottom: '15px',
         // flexGrow: 1,
         // position: 'sticky'
     },
     menuButton: {
         float: 'right',
-        display: 'block',
+        // display: 'block',
+        position: 'relative'
     },
     title: {
         color: '#414141',
-        textAlign: 'center',
+        // textAlign: 'center',
         fontFamily: 'Crete Round, serif',
         fontStyle: 'normal',
         fontWeight: 'normal',
@@ -31,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing: '0.06em',
         paddingTop: '0.9em',
         display: 'block',
-        paddingLeft: '12%',
+        // paddingLeft: '12%',
     },
     bar: {
         background: '#BFD6ED',
@@ -61,12 +63,20 @@ function Header() {
                     <Toolbar>
                         <Grid container spacing={0} >
                             <Grid item xs={12}>
-                                <h1 className={classes.title}>
+                                <div className={classes.title}>
+                                    <div style={{"textAlign": 'center', "display": "inline"}}>
                                     TRENDS
+
+                                    </div>
+                                    
+                                    <span style={{"display": "inline"}}>
                                     <IconButton edge="start" className={classes.menuButton} aria-label="menu">
                                     <MenuIcon />
                                     </IconButton>
-                                </h1>
+                                    </span>
+                                </div>
+                                
+                                
                                 
                                 
                                

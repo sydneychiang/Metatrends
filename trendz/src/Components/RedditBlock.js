@@ -1,25 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import './Component.css'
 import liam from './liamNeeson.jpg'
 import Divider from '@material-ui/core/Divider';
 
-function RedditBlock() {
-    return (
-        <div class="Block">
-            <img src={liam} align="left" class="circlePhoto"/> 
+const nsfwImage = "https://www.cbronline.com/wp-content/uploads/2016/08/UploadsNewsArticle4945779main.jpg"
+const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 
-            <span className="reddit">Reddit</span>
+function RedditBlock(data) {
+    useEffect(()=>{
+        console.log("REDDIT", data)
+    }, [])
+
+    const renderImage = () => {
+        if (data.data.thumbnail==="nsfw") {
+            return (<img src={nsfwImage} alt="" align="left" className="circlePhoto"/>)
+        }
+        else if(data.data.thumbnail==="default")
+        {
+            return (<img src={defaultImage} alt="" align="left" className="circlePhoto"/>)
+        }
+        else {
+            return(<img src={data.data.thumbnail} alt="" align="left" className="circlePhoto"/>)
+        }
+    }
+    
+
+    return (
+        <div className="Block">
+            {renderImage()}
+
+            <span className="mediaType reddit">Reddit</span>
             <span className="trendingNum">#10 Trending</span>
             
-            <span className="blockTitle">r/MovieDetails</span>
-            <span className="description">When Liam Neeson was asked to play the antagonist in A Million Ways
-            to die in the West (2014) (directed by Seth McFarlane) he accepted due to a scene in Family Guy 
-            where Peter says “Imagine Liam Neeson in a Western! Ha! With that funny accent of his!”</span>
-        
-
-
-
-            
+    <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
+            <span className="description">{data.data.title}</span>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
         </div>
     )

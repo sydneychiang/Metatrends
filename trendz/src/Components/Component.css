@@ -7,6 +7,15 @@ span {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
+
+}
+
+.Handle{
+    display: inline;
+    color: #687684;
+    font-size: 14px;
+    line-height: 1em;
 }
 
 .mediaType {
@@ -24,7 +33,6 @@ span {
 
 .blockTitle {
     font-size: 20px;
-    margin-left: 5%;
     margin-bottom: 0.2em;
 }
 
@@ -33,7 +41,8 @@ span {
     font-size: 14px;
     padding-bottom: 1.5em;
     display: block;
-    margin-left: 5em;
+
+
 }
 
 .circlePhoto {
@@ -43,10 +52,56 @@ span {
     object-fit: cover;
     float: left;
     margin-right: 0.5em;
+    margin-top: 0.4em;
+    filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .posterPhoto {
     width: 4em;
     object-fit: scale-down;
+    border-radius: 4px;
+    float: left;
+    margin-right: 0.5em;
+    margin-top: 0.3em;
+    filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+
+Divider{
+    variant: fullWidth;
+
+}
+
+.hashtag {
+    color: #4C9EEB;
+    cursor: pointer;
+    text-decoration: none;
+}
+.hashtag:hover {
+    text-decoration: underline;
+}
+
+.reddit{
+    color: #669693;
+}
+
+.movie{
+    color: #CD3764;
+}
+
+.tv{
+    color: #52B7D7;
+}
+
+.twitterPost {
+    color: #4C77C9;
+}
+
+.videoGame{
+    color: #D7A252;
+}
+
+.song{
+    color: #B1945C;
 
 }
