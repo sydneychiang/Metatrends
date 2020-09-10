@@ -8,7 +8,7 @@ function Tweet( data ) {
         console.log(data)
     }, [])
     return (
-        <div className="Block" onClick={(event => {window.location.href = data.data.link})}>
+        <div className="Block" onClick={(event => {window.open(data.data.link)})}>
             <img src={data.data.profile_image} alt="Twitter" align="left" className="circlePhoto"/> 
 
             <span className="mediaType twitterPost">Tweet</span>
@@ -18,7 +18,8 @@ function Tweet( data ) {
             
             
             <span className="description">{data.data.text} <a className="hashtag" href="https://twitter.com/hashtag/tellmeaboutyou?src=hash" target='_blank'>#TellMeAboutYou</a></span>
-         <Divider variant="middle" style={{marginBottom: '15px', "width": '90%', 'margin': '0 auto'}} />
+            <Divider variant="middle" style={{marginBottom: '15px', "width": '90%', 'margin': '0 auto'}} />
+         
         </div>
     )
 }

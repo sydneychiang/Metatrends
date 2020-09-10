@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 
 function SongBlock() {
     return (
-        <div className="Block">
+        <div class="Block">
             <img src={wap} alt="" align="left" className="circlePhoto"/> 
 
             <span className="mediaType song">Song</span>

@@ -9,13 +9,14 @@ const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 function RedditBlock(data) {
     useEffect(()=>{
         console.log("REDDIT", data)
+        console.log("REDDIT LINK:", data.data.link)
     }, [])
 
     const renderImage = () => {
         if (data.data.thumbnail==="nsfw") {
             return (<img src={nsfwImage} alt="" align="left" className="circlePhoto"/>)
         }
-        else if(data.data.thumbnail==="default")
+        else if(data.data.thumbnail==="default" || data.data.thumbnail==="self")
         {
             return (<img src={defaultImage} alt="" align="left" className="circlePhoto"/>)
         }
@@ -26,7 +27,7 @@ function RedditBlock(data) {
     
 
     return (
-        <div className="Block">
+        <div className="Block" onClick={(event => {window.open("https://"+ String(data.data.link))})}>
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>

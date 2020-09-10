@@ -4,10 +4,14 @@ span {
 }
 
 .Block{
-    width: 90%;
+    max-width: 600px;
     margin-left: auto;
+    margin-right:auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    /* margin-left: auto;
     margin-right: auto;
-    cursor: pointer;
+    cursor: pointer; */
 
 }
 
@@ -41,7 +45,7 @@ span {
     font-size: 14px;
     padding-bottom: 1.5em;
     display: block;
-
+    flex: 1;
 
 }
 
@@ -64,7 +68,6 @@ span {
     margin-right: 0.5em;
     margin-top: 0.3em;
     filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-
 }
 
 Divider{

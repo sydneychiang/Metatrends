@@ -8,7 +8,9 @@ function TvBlock(data) {
         console.log("TV: ", data)
     }, [])
     return (
-        <div className="Block">
+        
+        <div className="Block" onClick={(event => {window.open(data.data.link, '_blank')})}> 
+            
             <img src={data.data.image} alt="" align="left" className="posterPhoto"/> 
 
             <span className="mediaType tv">Television</span>

@@ -33,18 +33,18 @@ function Home() {
     const displayData = () => {
         // console.log(data)
         let elements = []
-        if (data.length!=0) {
+        if (data.length!==0) {
             for (let i = 0; i <data[0].data.length; i++) {
-                if (data[0].data[i].type == 'tweet') {
+                if (data[0].data[i].type === 'tweet') {
                     elements.push(<Tweet data={data[0].data[i]} />)
                 }
-                if (data[0].data[i].type == 'reddit') {
+                if (data[0].data[i].type === 'reddit') {
                     elements.push(<RedditBlock data={data[0].data[i]} />)
                 }
-                if (data[0].data[i].type == 'movie') {
+                if (data[0].data[i].type === 'movie') {
                     elements.push(<MovieBlock data={data[0].data[i]}/>)
                 }
-                if (data[0].data[i].type == 'tv') {
+                if (data[0].data[i].type === 'tv') {
                     console.log('hello')
                     elements.push(<TvBlock data={data[0].data[i]} />)
                 }
@@ -57,7 +57,7 @@ function Home() {
 
     return (
         <div className={classes.back}>
-            <Header />
+            <Header style={{display:"flex", alignItems:"center", width:"100%"}} />
             {displayData().map(item =>(item))}
             {/* {data.length!=0 ? <Tweet data={data}/>: null} */}
             {/* <RedditBlock /> */}
@@ -65,7 +65,7 @@ function Home() {
             <TvBlock /> */}
             <VideoGameBlock />
             <SongBlock />
-            <button onClick={(event => {window.location.href = "https:/google.com"})}> test</button>
+            {/* <button onClick={(event => {window.location.href = "https:/google.com"})}> test</button> */}
         </div>
     )
 }
