@@ -76,23 +76,26 @@ span {
 }
 
 .youtubeImage {
-    height: 3em;
+    /* height: 2.2em; */
+    height: 6em;
     width: 4em;
     object-fit: cover;
+    transform: translateY(-12px); 
 
     
 }
 
 .youtubeImageFormat{
-    /* height: 3em; */
-    /* overflow: hidden;
-    object-fit: cover;
+    height: 4em;
+    overflow: hidden;
+    object-fit: fill;
     width: 4em;
     height: 4em;
     float: left;
     border-radius: 4px;
     margin-right: 0.5em;
-    filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25)); */
+    filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+
 
 
 }
