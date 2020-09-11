@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Component.css'
-import liam from './liamNeeson.jpg'
 import Divider from '@material-ui/core/Divider';
 
 const nsfwImage = "https://www.cbronline.com/wp-content/uploads/2016/08/UploadsNewsArticle4945779main.jpg"
@@ -8,8 +7,8 @@ const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 
 function RedditBlock(data) {
     useEffect(()=>{
-        console.log("REDDIT", data)
-        console.log("REDDIT LINK:", data.data.link)
+        // console.log("REDDIT", data)
+        // console.log("REDDIT LINK:", data.data.link)
     }, [])
 
     const renderImage = () => {
@@ -27,15 +26,18 @@ function RedditBlock(data) {
     
 
     return (
-        <div className="Block" onClick={(event => {window.open("https://"+ String(data.data.link))})}>
+        <div className="Block" >
+            <a href={"https://"+ String(data.data.link)} target='_blank'>
+
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>
-            <span className="trendingNum">#10 Trending</span>
+            <span className="trendingNum">#{data.data.position+1} Trending</span>
             
     <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
             <span className="description">{data.data.title}</span>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
+            </a>
         </div>
     )
 }

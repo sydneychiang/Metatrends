@@ -9,17 +9,18 @@ function TvBlock(data) {
     }, [])
     return (
         
-        <div className="Block" onClick={(event => {window.open(data.data.link, '_blank')})}> 
-            
+        <div className="Block"> 
+            <a href={data.data.link} target='_blank'>
             <img src={data.data.image} alt="" align="left" className="posterPhoto"/> 
 
             <span className="mediaType tv">Television</span>
-            <span className="trendingNum">#5 Trending</span>
+            <span className="trendingNum">#{data.data.position+1}  Trending</span>
             
             <span className="blockTitle">{data.data.original_title}</span>
             <span className="description">{data.data.overview}</span>
         
             <Divider variant="middle" style={{marginBottom: '15px'}} />
+            </a>
         </div>
     )
 }

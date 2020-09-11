@@ -7,17 +7,20 @@ function MovieBlock(data) {
         console.log(data.data)
     }, [])
     return (
-        <div className="Block" onClick={(event => {window.open(data.data.link)})}>
+        <div className="Block" >
+            <a href={data.data.link} target='_blank'>
+
             <div >
                 <img src={data.data.image} alt="Mulan Poster" className="posterPhoto" align="left"/>
 
                 <span className="mediaType movie">Movie</span>
-                <span className="trendingNum">#1 Trending</span>
+                <span className="trendingNum">#{data.data.position+1}  Trending</span>
 
                 <span className="blockTitle">{data.data.original_title}</span>
                 <span className="description">{data.data.overview}</span>
             </div>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
+            </a>
         </div>
     )
 }

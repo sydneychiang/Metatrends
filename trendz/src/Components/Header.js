@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 import '../index.css';
+import { Hidden } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,22 +24,31 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative'
     },
     title: {
-        color: '#414141',
-        // textAlign: 'center',
+        color: 'white',
+        textAlign: 'center',
         fontFamily: 'Crete Round, serif',
         fontStyle: 'normal',
         fontWeight: 'normal',
-        fontSize: '35px',
+        fontSize: '50px',
         lineHeight: '45px',
         letterSpacing: '0.06em',
         paddingTop: '0.9em',
-        display: 'block',
-        // paddingLeft: '12%',
+        marginLeft: '1em',
+
+
     },
     bar: {
-        background: '#BFD6ED',
-        borderBottomLeftRadius: '20px',
-        borderBottomRightRadius: '20px'
+
+        borderRadius: '0 0 50% 50%',
+        // borderBottomRightRadius: '100%',
+        maxWidth: '600px',
+        height: '150px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingLeft: '5%',
+        paddingRight: '5%',
+        background: 'linear-gradient(#CCBEBA, #959DA6)',
+        boxShadow: 'none',
     },
     date: {
         fontFamily: 'Roboto',
@@ -47,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '20px',
         lineHeight: '23px',
         letterSpacing: '0.06em',
-        color: '#414141',
+        color: 'white',
         textAlign: 'center',
         paddingBottom: '1em'
     }
@@ -59,38 +69,42 @@ function Header() {
     return (
         <div>
             <div className={classes.root}>
-                <AppBar position="static" className={classes.bar}>
-                    <Toolbar>
-                        <Grid container spacing={0} >
-                            <Grid item xs={12}>
-                                <div className={classes.title}>
-                                    <div style={{"textAlign": 'center', "display": "inline"}}>
-                                    TRENDS
 
+
+            
+                <AppBar position="static" className={classes.bar}>
+
+                        <Toolbar>
+                            <Grid container spacing={0} >
+                                <Grid item xs={12}>
+                                    <div className={classes.title}>
+                                        <div style={{"textAlign": 'center', "display": "inline"}}>
+                                        trends
+
+                                        </div>
+                                        
+                                        <span style={{"display": "inline"}}>
+                                        <IconButton edge="start" className={classes.menuButton} aria-label="menu">
+                                        <MenuIcon style={{'color': 'white'}} />
+                                        </IconButton>
+                                        </span>
                                     </div>
                                     
-                                    <span style={{"display": "inline"}}>
-                                    <IconButton edge="start" className={classes.menuButton} aria-label="menu">
-                                    <MenuIcon />
-                                    </IconButton>
-                                    </span>
-                                </div>
+                                    
+                                    
+                                    
                                 
-                                
-                                
-                                
-                               
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <p className={classes.date}>
+                                        September 6, 2020
+                                    </p>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12}>
-                                <p className={classes.date}>
-                                    September 6, 2020
-                                </p>
-                            </Grid>
-                        </Grid>
 
-                        
+                            
 
-                    </Toolbar>
+                        </Toolbar>
 
                 </AppBar>
             </div>

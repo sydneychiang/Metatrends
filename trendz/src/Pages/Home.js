@@ -7,6 +7,7 @@ import MovieBlock from '../Components/MovieBlock';
 import TvBlock from '../Components/TvBlock';
 import VideoGameBlock from '../Components/VideoGameBlock';
 import SongBlock from '../Components/SongBlock';
+import YoutubeBlock from '../Components/YoutubeBlock';
 import './Home.css';
 import axios from 'axios';
 
@@ -31,22 +32,35 @@ function Home() {
     }, [])
 
     const displayData = () => {
-        // console.log(data)
+        console.log(data)
         let elements = []
         if (data.length!==0) {
             for (let i = 0; i <data[0].data.length; i++) {
                 if (data[0].data[i].type === 'tweet') {
+                    data[0].data[i].position = i
                     elements.push(<Tweet data={data[0].data[i]} />)
                 }
-                if (data[0].data[i].type === 'reddit') {
+                else if (data[0].data[i].type === 'reddit') {
+                    data[0].data[i].position = i
                     elements.push(<RedditBlock data={data[0].data[i]} />)
                 }
-                if (data[0].data[i].type === 'movie') {
+                else if (data[0].data[i].type === 'movie') {
+                    data[0].data[i].position = i
                     elements.push(<MovieBlock data={data[0].data[i]}/>)
                 }
-                if (data[0].data[i].type === 'tv') {
-                    console.log('hello')
+                else if (data[0].data[i].type === 'tv') {
+                    data[0].data[i].position = i
                     elements.push(<TvBlock data={data[0].data[i]} />)
+                }
+                else if (data[0].data[i].type === 'spotify') {
+                    console.log('spotify')
+                    data[0].data[i].position = i
+                    elements.push(<SongBlock data={data[0].data[i]} />)
+                }
+                else if (data[0].data[i].type === 'youtube') {
+                    console.log('youtube')
+                    data[0].data[i].position = i
+                    elements.push(<YoutubeBlock data={data[0].data[i]} />)
                 }
             }
         }
@@ -57,14 +71,14 @@ function Home() {
 
     return (
         <div className={classes.back}>
-            <Header style={{display:"flex", alignItems:"center", width:"100%"}} />
+            <Header style={{display:"flex", alignItems:"center"}} />
             {displayData().map(item =>(item))}
             {/* {data.length!=0 ? <Tweet data={data}/>: null} */}
             {/* <RedditBlock /> */}
             {/* <MovieBlock />
             <TvBlock /> */}
             <VideoGameBlock />
-            <SongBlock />
+            {/* <SongBlock /> */}
             {/* <button onClick={(event => {window.location.href = "https:/google.com"})}> test</button> */}
         </div>
     )

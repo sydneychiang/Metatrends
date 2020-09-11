@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 function VideoGameBlock() {
     return (
             <div className="Block">
+
                 <img src={fallGuys} alt="" align="left" className="posterPhoto"/> 
 
                 <span className="mediaType videoGame">Video Game</span>
