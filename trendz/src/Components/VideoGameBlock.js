@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 
 function VideoGameBlock() {
     return (
+
             <div className="Block">
 
                 <img src={fallGuys} alt="" align="left" className="posterPhoto"/> 
@@ -14,8 +15,10 @@ function VideoGameBlock() {
                 
                 <span className="blockTitle">Fall Guys</span>
                 <span className="description">Ultimate Knockout flings hordes of contestants together online in a mad dash through round after round of escalating chaos until one victor remains!</span>
-                <Divider variant="middle" style={{marginBottom: '15px'}} />
+                <Divider variant="middle" style={{marginBottom: '15px', width:'600px'}} />
             </div>
+
+
     )
 }
 

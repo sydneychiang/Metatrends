@@ -32,7 +32,7 @@ function Tweet( data ) {
             
             
             <span className="description">{data.data.text} <a className="hashtag" href="https://twitter.com/hashtag/tellmeaboutyou?src=hash" target='_blank'>#Hashtag</a></span>
-            <Divider variant="middle" style={{marginBottom: '15px', "width": '90%', 'margin': '0 auto'}} />
+            <Divider variant="middle" style={{marginBottom: '15px'}} />
          </a>
         </div>
     )

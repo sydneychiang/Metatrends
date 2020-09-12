@@ -5,7 +5,7 @@ import fallGuys from './fallGuys.jpg'
 
 function YoutubeBlock(data) {
     useEffect(()=>{
-        console.log(data.data)
+        console.log("youtube data", data.data)
     }, [])
     return (
             <div className="Block">
@@ -18,9 +18,12 @@ function YoutubeBlock(data) {
                     
                     <span className="blockTitle">{data.data.channelTitle}</span>
                     <span className="description">{data.data.title}</span>
-                    <Divider variant="middle" style={{marginBottom: '15px'}} />
                 </a>
+                
+                <Divider variant="middle" style={{marginBottom: '15px'}} />
             </div>
+
+
     )
 }
 

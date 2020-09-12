@@ -8,6 +8,9 @@ import TvBlock from '../Components/TvBlock';
 import VideoGameBlock from '../Components/VideoGameBlock';
 import SongBlock from '../Components/SongBlock';
 import YoutubeBlock from '../Components/YoutubeBlock';
+import TwitchBlock from '../Components/TwitchBlock';
+import Filter from '../Components/Filter';
+
 import './Home.css';
 import axios from 'axios';
 
@@ -31,7 +34,9 @@ function Home() {
         // displayData();
     }, [])
 
-    const displayData = () => {
+    const filter = ['TV', 'Reddit', 'Song', 'Tweet', 'Movie', 'YouTube'];
+
+    const displayData = (filter) => {
         console.log(data)
         let elements = []
         if (data.length!==0) {
@@ -62,6 +67,11 @@ function Home() {
                     data[0].data[i].position = i
                     elements.push(<YoutubeBlock data={data[0].data[i]} />)
                 }
+                else if (data[0].data[i].type === 'twitch') {
+                    console.log('twitch')
+                    data[0].data[i].position = i
+                    elements.push(<TwitchBlock data={data[0].data[i]} />)
+                }
             }
         }
         return elements
@@ -72,14 +82,9 @@ function Home() {
     return (
         <div className={classes.back}>
             <Header style={{display:"flex", alignItems:"center"}} />
+            {/* <Filter /> */}
             {displayData().map(item =>(item))}
-            {/* {data.length!=0 ? <Tweet data={data}/>: null} */}
-            {/* <RedditBlock /> */}
-            {/* <MovieBlock />
-            <TvBlock /> */}
             <VideoGameBlock />
-            {/* <SongBlock /> */}
-            {/* <button onClick={(event => {window.location.href = "https:/google.com"})}> test</button> */}
         </div>
     )
 }

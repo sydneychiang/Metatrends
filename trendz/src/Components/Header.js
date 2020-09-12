@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '45px',
         letterSpacing: '0.06em',
         paddingTop: '0.9em',
-        marginLeft: '1em',
+        // marginLeft: '1em',
 
 
     },
     bar: {
-
+        alignItems: 'center',
         borderRadius: '0 0 50% 50%',
         // borderBottomRightRadius: '100%',
         maxWidth: '600px',
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: '5%',
         background: 'linear-gradient(#CCBEBA, #959DA6)',
         boxShadow: 'none',
+        position: 'sticky'
     },
     date: {
         fontFamily: 'Roboto',
@@ -62,7 +63,13 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '1em'
     }
 }));
-
+function getDateString(){
+    let d = new Date()
+    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+    const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d)
+    const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
+    return `${mo} ${da}, ${ye}`
+}
 
 function Header() {
     const classes = useStyles();
@@ -78,16 +85,16 @@ function Header() {
                             <Grid container spacing={0} >
                                 <Grid item xs={12}>
                                     <div className={classes.title}>
-                                        <div style={{"textAlign": 'center', "display": "inline"}}>
+                                        <div>
                                         trends
 
                                         </div>
                                         
-                                        <span style={{"display": "inline"}}>
-                                        <IconButton edge="start" className={classes.menuButton} aria-label="menu">
-                                        <MenuIcon style={{'color': 'white'}} />
-                                        </IconButton>
-                                        </span>
+                                        {/* <span style={{"display": "inline"}}>
+                                        <IconButton edge="start" className={classes.menuButton} aria-label="menu"> */}
+                                        {/* <MenuIcon style={{'color': 'white'}} /> */}
+                                        {/* </IconButton>
+                                        </span> */}
                                     </div>
                                     
                                     
@@ -97,7 +104,7 @@ function Header() {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <p className={classes.date}>
-                                        September 6, 2020
+                                        {getDateString()}
                                     </p>
                                 </Grid>
                             </Grid>
