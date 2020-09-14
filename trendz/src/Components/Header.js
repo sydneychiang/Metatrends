@@ -15,8 +15,7 @@ import { Hidden } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     root: {
         marginBottom: '15px',
-        // flexGrow: 1,
-        // position: 'sticky'
+
     },
     menuButton: {
         float: 'right',
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '45px',
         letterSpacing: '0.06em',
         paddingTop: '0.9em',
+        // transform: 'translateY(700px)'
         // marginLeft: '1em',
 
 
@@ -60,8 +60,9 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing: '0.06em',
         color: 'white',
         textAlign: 'center',
-        paddingBottom: '1em'
-    }
+        paddingBottom: '1em',
+    },
+
 }));
 function getDateString(){
     let d = new Date()
@@ -71,50 +72,43 @@ function getDateString(){
     return `${mo} ${da}, ${ye}`
 }
 
+function barExpand(){
+
+}
+
 function Header() {
     const classes = useStyles();
     return (
-        <div>
-            <div className={classes.root}>
+        <div className={classes.root}>
+            <AppBar className={classes.bar} onClick={barExpand()}>
+                    <Toolbar>
+                        <Grid container spacing={0} >
+                            <Grid item xs={12}>
+                                <div className={classes.title}>
+                                    <div>
+                                    trends
 
-
-            
-                <AppBar position="static" className={classes.bar}>
-
-                        <Toolbar>
-                            <Grid container spacing={0} >
-                                <Grid item xs={12}>
-                                    <div className={classes.title}>
-                                        <div>
-                                        trends
-
-                                        </div>
-                                        
-                                        {/* <span style={{"display": "inline"}}>
-                                        <IconButton edge="start" className={classes.menuButton} aria-label="menu"> */}
-                                        {/* <MenuIcon style={{'color': 'white'}} /> */}
-                                        {/* </IconButton>
-                                        </span> */}
                                     </div>
                                     
-                                    
-                                    
-                                    
-                                
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <p className={classes.date}>
-                                        {getDateString()}
-                                    </p>
-                                </Grid>
-                            </Grid>
-
+                                    {/* <span style={{"display": "inline"}}>
+                                    <IconButton edge="start" className={classes.menuButton} aria-label="menu"> */}
+                                    {/* <MenuIcon style={{'color': 'white'}} /> */}
+                                    {/* </IconButton>
+                                    </span> */}
+                                </div>
                             
+                            </Grid>
+                            <Grid item xs={12}>
+                                <p className={classes.date}>
+                                    {getDateString()}
+                                </p>
+                            </Grid>
+                        </Grid>
 
-                        </Toolbar>
+                        
 
-                </AppBar>
-            </div>
+                    </Toolbar>
+            </AppBar>
         </div>
     )
 }

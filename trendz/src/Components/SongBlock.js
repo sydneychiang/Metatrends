@@ -29,7 +29,7 @@ function SongBlock(data) {
 
 
     return (
-            <div class="Block">
+        <div className="Block">
         <a href={data.data.link} target='_blank'>
 
                 <img src={loadedImages} alt="" align="left" className="circlePhoto" />

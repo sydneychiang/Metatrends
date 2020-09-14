@@ -28,10 +28,10 @@ function TwitchBlock(data) {
                 <div className='youtubeImageFormat'>
                     <img src={data.data.thumbnail} alt="" align="left" className="youtubeImage"/> 
                 </div>
-                <span className="mediaType videoGame">Twitch</span>
+                <span className="mediaType twitch">Twitch</span>
                 <span className="trendingNum">#{data.data.position+1} Trending</span>
                 
-                <span className="blockTitle">{data.data.user_name + " is streaming "+data.data.game}</span>
+                <span className="blockTitle twitchTitle">{data.data.user_name + " is streaming "+data.data.game}</span>
                 {/* <span className="description">{data.data.title}</span> */}
             </a>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
