@@ -35,7 +35,7 @@ function SongBlock(data) {
                 <img src={loadedImages} alt="" align="left" className="circlePhoto" />
 
                 <span className="mediaType song">Song</span>
-                <span className="trendingNum">#{data.data.position+1}  Trending</span>
+                <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
 
                 <span className="blockTitle">{loadedName}</span>
                 <span className="description">{loadedArtists.map(inner => inner).join(', ')}</span>

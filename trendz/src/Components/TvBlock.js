@@ -14,7 +14,7 @@ function TvBlock(data) {
             <img src={data.data.image} alt="" align="left" className="posterPhoto"/> 
 
             <span className="mediaType tv">Television</span>
-            <span className="trendingNum">#{data.data.position+1}  Trending</span>
+            <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
             
             <span className="blockTitle">{data.data.original_title}</span>
             <span className="description">{data.data.overview}</span>

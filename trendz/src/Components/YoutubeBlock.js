@@ -14,7 +14,7 @@ function YoutubeBlock(data) {
                         <img src={data.data.thumbnails.high.url} alt="" align="left" className="youtubeImage"/> 
                     </div>
                     <span className="mediaType videoGame">Youtube</span>
-                    <span className="trendingNum">#{data.data.position+1} Trending</span>
+                    <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
                     
                     <span className="blockTitle">{data.data.channelTitle}</span>
                     <span className="description">{data.data.title}</span>

@@ -32,7 +32,7 @@ function RedditBlock(data) {
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>
-            <span className="trendingNum">#{data.data.position+1} Trending</span>
+            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
             
     <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
             <span className="description">{data.data.title}</span>

@@ -84,7 +84,7 @@ function Home() {
             <Header style={{display:"flex", alignItems:"center"}} />
             {/* <Filter /> */}
             {displayData().map(item =>(item))}
-            <VideoGameBlock />
+            {/* <VideoGameBlock /> */}
         </div>
     )
 }

@@ -29,7 +29,7 @@ function TwitchBlock(data) {
                     <img src={data.data.thumbnail} alt="" align="left" className="youtubeImage"/> 
                 </div>
                 <span className="mediaType twitch">Twitch</span>
-                <span className="trendingNum">#{data.data.position+1} Trending</span>
+                <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
                 
                 <span className="blockTitle twitchTitle">{data.data.user_name + " is streaming "+data.data.game}</span>
                 {/* <span className="description">{data.data.title}</span> */}
