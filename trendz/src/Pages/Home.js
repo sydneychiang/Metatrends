@@ -5,7 +5,7 @@ import Header from '../Components/Header';
 import RedditBlock from '../Components/RedditBlock';
 import MovieBlock from '../Components/MovieBlock';
 import TvBlock from '../Components/TvBlock';
-import VideoGameBlock from '../Components/VideoGameBlock';
+// import VideoGameBlock from '../Components/VideoGameBlock';
 import SongBlock from '../Components/SongBlock';
 import YoutubeBlock from '../Components/YoutubeBlock';
 import TwitchBlock from '../Components/TwitchBlock';
@@ -34,10 +34,10 @@ function Home() {
         // displayData();
     }, [])
 
-    const filter = ['TV', 'Reddit', 'Song', 'Tweet', 'Movie', 'YouTube'];
+    const [showFilter, setShowFilter] = useState(false);
 
     const displayData = (filter) => {
-        console.log(data)
+        // console.log(data)
         let elements = []
         if (data.length!==0) {
             for (let i = 0; i <data[0].data.length; i++) {
@@ -58,17 +58,14 @@ function Home() {
                     elements.push(<TvBlock data={data[0].data[i]} />)
                 }
                 else if (data[0].data[i].type === 'spotify') {
-                    console.log('spotify')
                     data[0].data[i].position = i
                     elements.push(<SongBlock data={data[0].data[i]} />)
                 }
                 else if (data[0].data[i].type === 'youtube') {
-                    console.log('youtube')
                     data[0].data[i].position = i
                     elements.push(<YoutubeBlock data={data[0].data[i]} />)
                 }
                 else if (data[0].data[i].type === 'twitch') {
-                    console.log('twitch')
                     data[0].data[i].position = i
                     elements.push(<TwitchBlock data={data[0].data[i]} />)
                 }
@@ -81,8 +78,9 @@ function Home() {
 
     return (
         <div className={classes.back}>
-            <Header style={{display:"flex", alignItems:"center"}} />
-            {/* <Filter /> */}
+            {/* <Header style={{display:"flex", alignItems:"center"}} /> */}
+            {/* <button onClick={event => {setShowFilter(!showFilter)}}> FILTER TOGGLE </button> */}
+            {showFilter?<Filter /> : null}
             {displayData().map(item =>(item))}
             {/* <VideoGameBlock /> */}
         </div>

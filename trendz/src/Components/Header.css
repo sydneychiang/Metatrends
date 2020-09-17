@@ -1,0 +1,47 @@
+.root {
+    margin-bottom: 15px;
+
+}
+
+.menuButton {
+    /* float: right; */
+    /* position: relative; */
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-family: "Crete Round";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    padding-top: 0.9em;
+}
+
+.bar {
+    align-items: center;
+    border-radius: 0 0 50% 50%;
+    max-width: 600px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    background: linear-gradient(#CCBEBA, #959DA6);
+    box-shadow: none;
+    position: sticky;
+}
+
+.date {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: white;
+    text-align: center;
+    padding-bottom: 1em;
+}

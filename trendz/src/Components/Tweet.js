@@ -16,9 +16,7 @@ function fixImage(imageLink)
 }
 
 function Tweet( data ) {
-    useEffect(()=>{
-        console.log(data)
-    }, [])
+ 
     return (
         <div className="Block" >
         <a href={data.data.link} target='_blank'>
@@ -26,12 +24,13 @@ function Tweet( data ) {
             <img src={fixImage(data.data.profile_image)} alt="Twitter" align="left" className="circlePhoto"/> 
 
             <span className="mediaType twitterPost">Tweet</span>
-            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
+            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
             <span className="blockTitle">{data.data.user_name}  <span className="Handle">@{data.data.screen_name} · {data.data.created_at.substring(0,10)}{/*Date(data.data.created_at).getFullYear() + '-' + (data.data.created_at.getMonth() + 1) + '-' + data.data.created_at.getDate()*/}</span></span>
             
             
-            <span className="description">{data.data.text} <a className="hashtag" href="https://twitter.com/hashtag/tellmeaboutyou?src=hash" target='_blank'>#Hashtag</a></span>
+            <span className="description">{data.data.text}</span>
+            {/* <a className="hashtag" href="https://twitter.com/hashtag/tellmeaboutyou?src=hash" target='_blank'>#Hashtag</a> */}
             <Divider variant="middle" style={{marginBottom: '15px'}} />
          </a>
         </div>

@@ -9,7 +9,6 @@ function SongBlock(data) {
     const [loadedImages, setLoadedImages] = useState(null)
 
     useEffect(() => {
-        console.log(data)
         if (data.data) {
             setLoadedName(data.data.name)
 
@@ -35,7 +34,7 @@ function SongBlock(data) {
                 <img src={loadedImages} alt="" align="left" className="circlePhoto" />
 
                 <span className="mediaType song">Song</span>
-                <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
+                <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
 
                 <span className="blockTitle">{loadedName}</span>
                 <span className="description">{loadedArtists.map(inner => inner).join(', ')}</span>

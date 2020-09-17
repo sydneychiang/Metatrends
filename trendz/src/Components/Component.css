@@ -33,13 +33,17 @@ span {
 } */
 
 .Block:hover{
-    opacity: 70%;
+    /* opacity: 70%;
     flex: 1;
     max-width: 650px;
     padding-left: none;
     padding-right: none;
     animation-duration: 3s;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; */
+    /* box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px; */
+  transform: translate3d(0px, -5px, 0px);
+  -webkit-transition: transform 0.25s ease-in-out;
+  /* text-shadow:  1px 1px 5px #3d3d3d; */
 
 }
 
@@ -77,6 +81,7 @@ span {
     overflow: hidden;
 }
 
+
 .circlePhoto {
     border-radius: 50%;
     width: 4em;
@@ -96,6 +101,7 @@ span {
     float: left;
     margin-right: 0.8em;
     margin-top: 0.3em;
+    margin-bottom: 0.2em;
     filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
 }
 

@@ -6,10 +6,7 @@ const nsfwImage = "https://www.cbronline.com/wp-content/uploads/2016/08/UploadsN
 const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 
 function RedditBlock(data) {
-    useEffect(()=>{
-        // console.log("REDDIT", data)
-        // console.log("REDDIT LINK:", data.data.link)
-    }, [])
+    
 
     const renderImage = () => {
         if (data.data.thumbnail==="nsfw") {
@@ -32,7 +29,7 @@ function RedditBlock(data) {
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>
-            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000)}</span>
+            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
     <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
             <span className="description">{data.data.title}</span>
