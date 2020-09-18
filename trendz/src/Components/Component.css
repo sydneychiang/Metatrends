@@ -65,7 +65,7 @@ span {
 .trendingNum {
     font-size: 12px;
     color: #464745;
-    opacity: 90%;
+    /* opacity: 90%; */
     float: right;
 }
 
