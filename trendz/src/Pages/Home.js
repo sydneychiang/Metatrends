@@ -81,8 +81,8 @@ function Home() {
         <div >
             <Header />
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
-            {showFilter?<Filter /> : null}
-            {displayData().map(item =>(item))} */}
+            {showFilter?<Filter /> : null} */}
+            {displayData().map(item =>(item))}
         </div>
     )
 }
