@@ -11,3 +11,8 @@
     background: red;
     position: fixed;
 }
+
+ListItem {
+    border: 3px solid black;
+
+}

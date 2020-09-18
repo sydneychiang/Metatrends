@@ -16,10 +16,12 @@ span {
     margin-right:auto;
     padding-left: 5%;
     padding-right: 5%;
-    /* margin-left: auto;
-    margin-right: auto; */
+    
     cursor: pointer; 
     overflow-x: hidden
+
+    /* margin-left: auto;
+    margin-right: auto; */
 
 }
 /* .Block{
@@ -132,7 +134,7 @@ span {
 }
 
 
-
+/* 
 .hashtag {
     color: #4C9EEB;
     cursor: pointer;
@@ -140,7 +142,7 @@ span {
 }
 .hashtag:hover {
     text-decoration: underline;
-}
+} */
 
 .reddit{
     color: #669693;

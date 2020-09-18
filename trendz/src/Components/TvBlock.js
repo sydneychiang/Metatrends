@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Component.css'
 import Divider from '@material-ui/core/Divider';
+import statusUpdate from './componentFunctions/statusUpdate.js';
 
 function TvBlock(data) {
-    useEffect(()=>{
-        // console.log("TV: ", data)
-    }, [])
+    
     return (
         
         <div className="Block"> 
@@ -13,7 +12,7 @@ function TvBlock(data) {
             <img src={data.data.image} alt="" align="left" className="posterPhoto"/> 
 
             <span className="mediaType tv">Television</span>
-            <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+    <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
             <span className="blockTitle">{data.data.original_title}</span>
             <span className="description">{data.data.overview}</span>

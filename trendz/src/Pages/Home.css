@@ -2,3 +2,29 @@ body{
     /* background-color: #FFFAF6; */
     background-color: #fcfcf7;
 }
+
+.filterButton{
+    background: #A3A5AB;
+    border-radius: 20px;
+    color: white;
+    height: 2em;
+    padding-left: 0.5em;
+    /* padding-right: 2em; */
+    text-align: left;
+    font-family: "Merriweather";
+    border: none;
+    width: 160px;
+    margin: 0 auto;
+    /* opacity: 30%; */
+
+    /* take this out, just here for testing */
+    /* margin-right: 100px; */
+
+}
+
+
+.leftAlign{
+    float: right;
+
+
+}

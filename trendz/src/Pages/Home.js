@@ -31,6 +31,7 @@ function Home() {
 
     useEffect(() => {
         getData();
+        // onload
         // displayData();
     }, [])
 
@@ -77,12 +78,11 @@ function Home() {
 
 
     return (
-        <div className={classes.back}>
-            {/* <Header style={{display:"flex", alignItems:"center"}} /> */}
-            {/* <button onClick={event => {setShowFilter(!showFilter)}}> FILTER TOGGLE </button> */}
+        <div >
+            <Header />
+            {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
             {showFilter?<Filter /> : null}
-            {displayData().map(item =>(item))}
-            {/* <VideoGameBlock /> */}
+            {displayData().map(item =>(item))} */}
         </div>
     )
 }

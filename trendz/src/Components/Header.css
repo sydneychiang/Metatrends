@@ -1,12 +1,20 @@
 .root {
-    margin-bottom: 15px;
+    max-width: 600px;
+    /* padding-left: 5%;
+    padding-right: 5%; */
+    margin: 0 auto;
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; */
 
 }
 
-.menuButton {
+/* .menuButton { */
     /* float: right; */
     /* position: relative; */
-}
+/* } */
 
 .title {
     color: white;
@@ -15,27 +23,43 @@
     font-style: normal;
     font-weight: normal;
     font-size: 50px;
+    /* font-size: 30px; */
     line-height: 45px;
+    /* line-height: 30px; */
     letter-spacing: 0.06em;
-    padding-top: 0.9em;
+    padding-top: 0.6em;
+    /* padding-top: 0.3em; */
 }
 
+.tester{
+    background-color: red;
+    width:600px;
+    height:600px;
+
+}
+
+/* Fix sizing inside className= root */
 .bar {
-    align-items: center;
-    border-radius: 0 0 50% 50%;
-    max-width: 600px;
+    border-radius: 0 0 50% 50%!important;
+    /* max-width: 600px!important; */
     height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5%;
-    padding-right: 5%;
     background: linear-gradient(#CCBEBA, #959DA6);
     box-shadow: none;
-    position: sticky;
+    transition-duration: 0.6s;
+
+    /* position: sticky; */
+}
+
+.scrollbar {
+    border-radius: 0 0 50% 50%!important;
+    /* max-width: 600px!important; */
+    height: 75px;
+    background: linear-gradient(#CCBEBA, #959DA6);
+    box-shadow: none;
 }
 
 .date {
-    font-family: Roboto;
+    font-family: "Roboto";
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
@@ -44,4 +68,23 @@
     color: white;
     text-align: center;
     padding-bottom: 1em;
+}
+
+
+.filterButton{
+    background: #A3A5AB;
+    border-radius: 20px;
+    color: white;
+    height: 2em;
+    padding-left: 0.5em;
+    padding-right: 2em;
+    text-align: left;
+    font-family: "Merriweather";
+    border: none;
+    display: hidden;
+    /* opacity: 30%; */
+
+    /* take this out, just here for testing */
+    margin: 0 auto;
+
 }

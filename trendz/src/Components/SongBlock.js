@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Component.css'
 import Divider from '@material-ui/core/Divider';
+import statusUpdate from './componentFunctions/statusUpdate.js';
 
 
 function SongBlock(data) {
@@ -11,13 +12,10 @@ function SongBlock(data) {
     useEffect(() => {
         if (data.data) {
             setLoadedName(data.data.name)
-
         }
-
         if (data.data.images[0]) {
             setLoadedImages(data.data.images[0].url)
         }
-
         if (data.data.artists[0]) {
             let temp = []
             data.data.artists.map(item => { temp.push(item.name) })
@@ -34,7 +32,7 @@ function SongBlock(data) {
                 <img src={loadedImages} alt="" align="left" className="circlePhoto" />
 
                 <span className="mediaType song">Song</span>
-                <span className="trendingNum">#{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+                <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
 
                 <span className="blockTitle">{loadedName}</span>
                 <span className="description">{loadedArtists.map(inner => inner).join(', ')}</span>
@@ -43,17 +41,6 @@ function SongBlock(data) {
         </a>
 
             </div>
-        // <div class="Block" onClick={(event => {window.open(data.data.link, '_blank')})}>
-        //     <img src={loadedImages} alt="" align="left" className="circlePhoto"/> 
-
-        //     <span className="mediaType song">Song</span>
-        //     <span className="trendingNum">#2 Trending</span>
-
-        //     <span className="blockTitle">{loadedName}</span>
-        //     <span className="description">{loadedArtists.map(inner=>inner).join(', ') }</span>
-
-        //     <Divider variant="middle" style={{marginBottom: '15px'}} />
-        // </div>
     )
 }
 

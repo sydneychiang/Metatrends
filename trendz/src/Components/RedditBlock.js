@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Component.css'
 import Divider from '@material-ui/core/Divider';
+import statusUpdate from './componentFunctions/statusUpdate.js';
 
 const nsfwImage = "https://www.cbronline.com/wp-content/uploads/2016/08/UploadsNewsArticle4945779main.jpg"
 const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
@@ -29,7 +30,7 @@ function RedditBlock(data) {
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>
-            <span className="trendingNum">#{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+            <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
     <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
             <span className="description">{data.data.title}</span>
