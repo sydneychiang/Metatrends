@@ -7,8 +7,10 @@ const nsfwImage = "https://www.cbronline.com/wp-content/uploads/2016/08/UploadsN
 const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 
 function RedditBlock(data) {
-    
-
+    const [localTime, setLocalTime] = useState(null);
+    useEffect(()=> {
+        setLocalTime(new Date(data.data.created_at).toString().substring(0,10));
+    }, [])
     const renderImage = () => {
         if (data.data.thumbnail==="nsfw") {
             return (<img src={nsfwImage} alt="" align="left" className="circlePhoto"/>)
@@ -32,7 +34,7 @@ function RedditBlock(data) {
             <span className="mediaType reddit">Reddit</span>
             <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
-    <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span></span>
+    <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span>  <span className="Handle"> · {localTime}</span></span>
             <span className="description">{data.data.title}</span>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
             </a>

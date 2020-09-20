@@ -10,7 +10,7 @@ import SongBlock from '../Components/SongBlock';
 import YoutubeBlock from '../Components/YoutubeBlock';
 import TwitchBlock from '../Components/TwitchBlock';
 import Filter from '../Components/Filter';
-
+import { WaveLoading } from 'react-loadingg';
 import './Home.css';
 import axios from 'axios';
 
@@ -23,10 +23,13 @@ function Home() {
     const classes = useStyles();
 
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false);
 
     const getData = async () => {
+        setLoading(true)
         const response = await axios.get("https://habitual.live:9000/getRecentTrendingData");
         setData(data.concat(response.data))
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -41,6 +44,7 @@ function Home() {
         // console.log(data)
         let elements = []
         if (data.length!==0) {
+            elements.push(<Header time={data[0].time}/>)
             for (let i = 0; i <data[0].data.length; i++) {
                 if (data[0].data[i].type === 'tweet') {
                     data[0].data[i].position = i
@@ -71,6 +75,7 @@ function Home() {
                     elements.push(<TwitchBlock data={data[0].data[i]} />)
                 }
             }
+            
         }
         return elements
     }
@@ -79,7 +84,8 @@ function Home() {
 
     return (
         <div >
-            <Header />
+            {loading ? <WaveLoading/>: null}
+            {/* <Header time={time}/> */}
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
             {showFilter?<Filter /> : null} */}
             {displayData().map(item =>(item))}

@@ -68,6 +68,7 @@
     color: white;
     text-align: center;
     padding-bottom: 1em;
+    transition-duration: 0.6s;
 }
 
 
@@ -87,4 +88,8 @@
     /* take this out, just here for testing */
     margin: 0 auto;
 
+}
+
+#lastUpdate{
+    transition-duration: 0.6s;
 }

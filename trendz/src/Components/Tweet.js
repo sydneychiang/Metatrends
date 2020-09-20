@@ -17,6 +17,11 @@ function fixImage(imageLink)
 }
 
 function Tweet( data ) {
+    const [localTime, setLocalTime] = useState(null);
+    useEffect(()=> {
+        setLocalTime(new Date(data.data.created_at).toString().substring(0,10));
+
+    }, [])
  
     return (
         <div className="Block" >
@@ -27,7 +32,7 @@ function Tweet( data ) {
             <span className="mediaType twitterPost">Tweet</span>
             <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
             
-            <span className="blockTitle">{data.data.user_name}  <span className="Handle">@{data.data.screen_name} · {data.data.created_at.substring(0,10)}{/*Date(data.data.created_at).getFullYear() + '-' + (data.data.created_at.getMonth() + 1) + '-' + data.data.created_at.getDate()*/}</span></span>
+            <span className="blockTitle">{data.data.user_name}  <span className="Handle">@{data.data.screen_name} · {localTime}{/*Date(data.data.created_at).getFullYear() + '-' + (data.data.created_at.getMonth() + 1) + '-' + data.data.created_at.getDate()*/}</span></span>
             
             
             <span className="description">{data.data.text}</span>

@@ -27,23 +27,36 @@ function getDateString(){
 
 
 
-function barExpand(isActive){
+function barExpand(isActive, time){
     // console.log("here")
+    
     let bar = document.getElementsByClassName("bar")[0];
+    let lastUpdate = document.getElementById("lastUpdateString");
+    console.log("last update", lastUpdate);
     if(isActive){
         //expand
         bar.style.height = "300px";
+        // lastUpdate.textContent = "Last updated at 2:51pm";
+        // console.log(data.time);
+        let today = new Date();
+
+        let update = Math.abs( today - time) / (36e5/60);
+        lastUpdate.textContent = "Last updated " + Math.round(update) + " minutes ago";
+        
     }
     else{
         //close
         bar.style.height = "150px";
+        lastUpdate.textContent = "";
 
     }
 }
 
-function Header() {
-    // const classes = useStyles();
+function Header(time) {
+    const classes = useStyles();
+
     const [toggle, setToggle] = useState(false);
+    let newTime = new Date(time.time);
     return (
         <div className="root">
         
@@ -51,7 +64,7 @@ function Header() {
             // </div> */}
              <div id="testing" className="bar" onClick={() => {
                     setToggle(!toggle);
-                    barExpand(toggle);               
+                    barExpand(toggle, newTime);               
                  }}>
             
                 <Toolbar>
@@ -79,6 +92,8 @@ function Header() {
                         </Grid>
                         <Grid item xs={12}>
                             {/* <button className="filterButton">Filter</button> */}
+                            <span id="lastUpdateString" className="date">
+                            </span>
                         </Grid>
                     </Grid>
                 </Toolbar>
