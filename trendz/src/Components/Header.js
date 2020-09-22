@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-
+import Filter from '../Components/Filter';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +14,31 @@ import './Header.css';
 
 
 const useStyles = makeStyles((theme) => ({
+    arrow: {
+        // textAlign: "center",
+        color:"white",
+        fontSize: "15px",
+        fontFamily: "Comfortaa",
+        position: "absolute",
+        bottom: "0",
+        left:"50%",
+        marginLeft:"-6px",
+        marginBottom: "1em",
+        zIndex: "1",
+    },
+    date: {
+        marginBottom: "2.5em",
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "20px",
+        lineHeight: "23px",
+        letterSpacing: "0.06em",
+        color: "white",
+        textAlign: "center",
+
+    },
+
 }));
 
 
@@ -31,37 +56,62 @@ function barExpand(isActive, time){
     // console.log("here")
     
     let bar = document.getElementsByClassName("bar")[0];
-    let lastUpdate = document.getElementById("lastUpdateString");
-    console.log("last update", lastUpdate);
+    let animate = document.getElementById("animate");
+
     if(isActive){
         //expand
-        bar.style.height = "300px";
-        // lastUpdate.textContent = "Last updated at 2:51pm";
-        // console.log(data.time);
-        let today = new Date();
-
-        let update = Math.abs( today - time) / (36e5/60);
-        lastUpdate.textContent = "Last updated " + Math.round(update) + " minutes ago";
+        openHeader(bar, animate, time);
         
     }
     else{
         //close
-        bar.style.height = "150px";
-        lastUpdate.textContent = "";
-
+        minimizeHeader(bar, animate);
     }
+}
+
+function openHeader(bar, animate, time){
+    let lastUpdate = document.getElementById("lastUpdateString");
+    bar.style.height = "30em";
+    let today = new Date();
+    let update = Math.abs( today - time) / (36e5/60);
+    lastUpdate.textContent = "Last updated " + Math.round(update) + " minutes ago";
+    animate.className = "rotate";
+}
+
+function minimizeHeader(bar, animate){
+    bar.style.height = "160px";
+    animate.className = "notrotate";
 }
 
 function Header(time) {
     const classes = useStyles();
+    const [showFilter, setShowFilter] = useState(false);
 
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
     let newTime = new Date(time.time);
+    let bar = document.getElementsByClassName("bar")[0];
+    console.log("bar:", bar)
+    let scroll = document.addEventListener("scroll", function(){
+        if(!toggle){
+            setToggle(!toggle);
+            barExpand(toggle, newTime);
+        }
+    });
+
+    // let click = document.addEventListener("click", function(event){
+    //     var isClickInside = bar.contains(event.target);
+        
+    //     console.log("toggle1: ", toggle);
+    //     if(!isClickInside){
+    //         setToggle(!toggle);
+    //         barExpand(toggle,newTime);
+    //     }
+
+    // });
+
     return (
         <div className="root">
         
-            {/* // <div className="tester">
-            // </div> */}
              <div id="testing" className="bar" onClick={() => {
                     setToggle(!toggle);
                     barExpand(toggle, newTime);               
@@ -70,33 +120,30 @@ function Header(time) {
                 <Toolbar>
                     <Grid container spacing={0} >
                         <Grid item xs={12}>
-                            <div className="title">
-                                <div>
-                                
-                                trends
-        
-                                </div>
-                                
-                                {/* <span style={{"display": "inline"}}>
-                                <IconButton edge="start" className={classes.menuButton} aria-label="menu"> */}
-                                {/* <MenuIcon style={{'color': 'white'}} /> */}
-                                {/* </IconButton>
-                                </span> */}
+                            <div className="title" onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                                metatrends
                             </div>
                         
                         </Grid>
                         <Grid item xs={12}>
-                            <p className= "date">
+                            <p className={classes.date}>
                                 {getDateString()}
                             </p>
                         </Grid>
                         <Grid item xs={12}>
-                            {/* <button className="filterButton">Filter</button> */}
+
+                        </Grid>
+                        <Grid item xs={12}>
                             <span id="lastUpdateString" className="date">
                             </span>
+                            <Filter />
                         </Grid>
                     </Grid>
                 </Toolbar>
+                <span className={classes.arrow}>
+                    <span id="animate" className="notrotate">v
+                    </span>       
+                </span>
              </div>
              
 

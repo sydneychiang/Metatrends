@@ -16,6 +16,10 @@ import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
+    spacer: {
+        height:"160px",
+        marginBottom:"20px",
+    }
 
 }));
 
@@ -24,19 +28,29 @@ function Home() {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false);
+    const [date, setDate] = useState();
 
-    const getData = async () => {
+    const getData = async (link="https://habitual.live:9000/getRecentTrendingData") => {
         setLoading(true)
-        const response = await axios.get("https://habitual.live:9000/getRecentTrendingData");
-        setData(data.concat(response.data))
+        let response;
+        try {
+            response = await axios.get(link);
+            setData(data.concat(response.data))
+
+        } catch(err) {
+            console.log(err)
+        }
         setLoading(false)
     }
 
     useEffect(() => {
-        getData();
+        let mydate = new Date();
+        getData(`https://habitual.live:9000/getRecentTrendingDataByDate?targetDate=${mydate}`);
+        // getData();
+
         // onload
         // displayData();
-    }, [])
+    }, [date])
 
     const [showFilter, setShowFilter] = useState(false);
 
@@ -84,6 +98,8 @@ function Home() {
 
     return (
         <div >
+            <div id="spacer" className={classes.spacer}></div>
+            {/* <button onClick={event => {setDate("2020-09-20")}}>change to yesterday</button> */}
             {loading ? <WaveLoading/>: null}
             {/* <Header time={time}/> */}
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
