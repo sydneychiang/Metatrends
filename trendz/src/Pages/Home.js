@@ -13,6 +13,8 @@ import Filter from '../Components/Filter';
 import { WaveLoading } from 'react-loadingg';
 import './Home.css';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +31,8 @@ function Home() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false);
     const [date, setDate] = useState();
+    const dispatch = useDispatch();
+    const filterObject = useSelector(state => state.appReducers)
 
     const getData = async (link="https://habitual.live:9000/getRecentTrendingData") => {
         setLoading(true)
@@ -42,6 +46,10 @@ function Home() {
         }
         setLoading(false)
     }
+
+    useEffect(() => {
+        console.log(filterObject);
+    }, [])
 
     useEffect(() => {
         let mydate = new Date();
@@ -98,9 +106,13 @@ function Home() {
 
     return (
         <div >
+            
             <div id="spacer" className={classes.spacer}></div>
             {/* <button onClick={event => {setDate("2020-09-20")}}>change to yesterday</button> */}
             {loading ? <WaveLoading/>: null}
+            {/* <button onClick={event => {dispatch({ type: 'SET_TWEET', payload: false })}}>toggle tweet filter test</button>
+            <button onClick={event => {console.log(filterObject)}}>check if tweet is filtered</button> */}
+
             {/* <Header time={time}/> */}
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
             {showFilter?<Filter /> : null} */}

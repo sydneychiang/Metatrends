@@ -6,6 +6,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { useSelector, useDispatch } from 'react-redux';
+
 // import './Home.css';
 
 // const theme = createMuiTheme({
@@ -43,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Filter() {
     const classes = useStyles();
+    const dispatch = useDispatch()
+
     const [checked, setChecked] = React.useState([1]);
     const platforms = ['TV', 'Reddit', 'Song', 'Tweet', 'Movie', 'YouTube'];
   
