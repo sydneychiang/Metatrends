@@ -14,7 +14,7 @@ import { WaveLoading } from 'react-loadingg';
 import './Home.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-
+import Calendar from '../Components/Calendar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -112,7 +112,7 @@ function Home() {
             {loading ? <WaveLoading/>: null}
             {/* <button onClick={event => {dispatch({ type: 'SET_TWEET', payload: false })}}>toggle tweet filter test</button>
             <button onClick={event => {console.log(filterObject)}}>check if tweet is filtered</button> */}
-
+            {/* <Calendar /> */}
             {/* <Header time={time}/> */}
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
             {showFilter?<Filter /> : null} */}

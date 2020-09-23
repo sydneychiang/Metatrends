@@ -11,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import '../index.css';
 import { Hidden } from '@material-ui/core';
 import './Header.css';
+import Calendar from "../Components/Calendar";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,7 +73,7 @@ function barExpand(isActive, time){
 
 function openHeader(bar, animate, time){
     let lastUpdate = document.getElementById("lastUpdateString");
-    bar.style.height = "30em";
+    bar.style.height = "40em";
     let today = new Date();
     let update = Math.abs( today - time) / (36e5/60);
     lastUpdate.textContent = "Last updated " + Math.round(update) + " minutes ago";
@@ -91,12 +93,12 @@ function Header(time) {
     let newTime = new Date(time.time);
     let bar = document.getElementsByClassName("bar")[0];
     console.log("bar:", bar)
-    let scroll = document.addEventListener("scroll", function(){
-        if(!toggle){
-            setToggle(!toggle);
-            barExpand(toggle, newTime);
-        }
-    });
+    // let scroll = document.addEventListener("scroll", function(){
+    //     if(!toggle){
+    //         setToggle(!toggle);
+    //         barExpand(toggle, newTime);
+    //     }
+    // });
 
     // let click = document.addEventListener("click", function(event){
     //     var isClickInside = bar.contains(event.target);
@@ -136,7 +138,9 @@ function Header(time) {
                         <Grid item xs={12}>
                             <span id="lastUpdateString" className="date">
                             </span>
+                            <Calendar />
                             <Filter />
+
                         </Grid>
                     </Grid>
                 </Toolbar>

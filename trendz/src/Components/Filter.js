@@ -27,7 +27,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: '600px',
+        maxWidth: '21%',
         margin: '0 auto',
     },
     check: {
@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
 
     },
+    filter: {
+      width: "40%",
+    },
 }));
 
 function Filter() {
@@ -48,7 +51,7 @@ function Filter() {
     const dispatch = useDispatch()
 
     const [checked, setChecked] = React.useState([1]);
-    const platforms = ['TV', 'Reddit', 'Song', 'Tweet', 'Movie', 'YouTube'];
+    const platforms = ['Movie', 'Reddit', 'Spotify', 'TV', 'Twitter', 'Twitch', 'YouTube'];
   
     const handleToggle = (value) => () => {
       const currentIndex = checked.indexOf(value);
@@ -69,7 +72,7 @@ function Filter() {
 
 
     return (
-        <div id="filter">
+        <div id={classes.filter}>
             <List dense className={classes.root}>
         {[0, 1, 2, 3, 4, 5].map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;

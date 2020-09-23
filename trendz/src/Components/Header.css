@@ -40,7 +40,7 @@
 
 /* Fix sizing inside className= root */
 .bar {
-    height: 160px;
+    height: 40em;
     background: linear-gradient(180deg, #91B7D9 0%, #C1D9D4 100%);
     box-shadow: none;
     transition-duration: 0.6s;
