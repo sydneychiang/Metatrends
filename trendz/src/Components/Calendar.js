@@ -26,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
             color: "white!important",
         },
     },
-    MuiFormLabel: {
-        root: {
+    MuiInput: {
+        input: {
             color: "white",
         },
+    },
+    input: {
+        color: "white",
     }
 }));
 
@@ -46,6 +49,9 @@ function Calendar() {
                     className={classes.textField}
                     InputLabelProps={{
                     shrink: true,
+                    }}
+                    InputProps= {{
+                        className: classes.input
                     }}
                 />
             </form>
