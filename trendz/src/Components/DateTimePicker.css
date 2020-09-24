@@ -1,0 +1,67 @@
+.outerCircle{
+    /* background-opacity: 30%; */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    margin-bottom: 1em !important;
+
+}
+
+
+.MuiFormLabel-root {
+    /* color: white !important; */
+    font-family: "Roboto" !important;
+    font-size: 18px !important;
+
+}
+
+.MuiInput-input {
+    color: white !important;
+    font-family: "Roboto" !important;
+    font-size: 18px !important;
+
+}
+
+/* .MuiInputLabel-root {
+    color: white !important;
+    font-family: "Roboto";
+} */
+
+.MuiPickersToolbar-toolbar {
+    background-color: #333333 !important;
+}
+
+.MuiPickerDTTabs-tabs{
+    background-color: #333333 !important;
+}
+
+.PrivateTabIndicator-colorSecondary-14{
+    background-color: #91B7D9 !important;
+}
+
+.MuiIconButton-root{
+    color: white !important;
+    opacity: 80% !important;
+
+}
+
+.MuiInput-underline::before{
+    /* border-bottom-color: white !important;
+ */
+    border-bottom: none !important;
+}
+
+.MuiInput-underline::after{
+    /* border-bottom-color: white !important; */
+    border-bottom: none !important;
+}
+
+.MuiPickersDay-day{
+    color: black !important;
+}
+
+.MuiPickersDay-current{
+    color: white !important;
+
+}
+

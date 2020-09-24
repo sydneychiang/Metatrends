@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 //import { Calendar } from '@material-ui/pickers/views/Calendar/Calendar';
 import TextField from '@material-ui/core/TextField';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+import { StylesProvider } from '@material-ui/styles'
+import './Calendar.css'
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        color: "white",
+
     },
     formDiv: {
         marginLeft: "auto",
@@ -15,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         margin: "0 auto",
-
-
     },
     textField: {
         color: "white",
@@ -28,33 +31,86 @@ const useStyles = makeStyles((theme) => ({
     },
     MuiInput: {
         input: {
-            color: "white",
+            color: "white !important",
         },
     },
     input: {
         color: "white",
+        fontFamily: "Roboto",
+        fontSize: "18px",
+    },
+    underline: {
+        "&&&:before": {
+            borderBottomColor: "white"
+          },
+        "&&:after": {
+        borderBottomColor: "white"
+        }
     }
+
 }));
+
+
+function formatDateString(int){
+    let str = int.toString()
+    if(str.length < 2){
+        return `0${str}`;
+    }
+    else{
+        return str;
+    }
+}
+
+const theme = createMuiTheme({
+    overrides: {
+        MuiInput: {
+            underline: {
+                // borderBottomColor: 'red !important'
+                before:{
+                    borderBottom: "1px solid rgba(256,256,256,0.42) !important"
+                },
+                after: {
+                    borderBottomColor: "white !important"
+                }
+                // // borderBottomColor: "rgba(256,256, 256, 1) !important",
+            }
+        }
+    }
+})
 
 function Calendar() {
     const classes = useStyles();
+    let d = new Date();
+    let date = formatDateString(d. getDate());
+    let month = formatDateString(d. getMonth() + 1); // Since getMonth() returns month from 0-11 not 1-12.
+    let year = d. getFullYear();
+    let hour = formatDateString(d.getHours());
+    let minute = formatDateString(d. getMinutes());
+
     return (
-        <div className={classes.formDiv}>
-            <form className={classes.container} noValidate>
-                <TextField
-                    id="datetime-local"
-                    label="Select Date"
-                    type="datetime-local"
-                    defaultValue="2017-05-24T10:30"
-                    className={classes.textField}
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                    InputProps= {{
-                        className: classes.input
-                    }}
-                />
-            </form>
+        <div className={classes.formDiv} onClick={event => {event.stopPropagation()}}>
+            <MuiThemeProvider theme={theme}>
+                <StylesProvider >
+                    <form className={classes.container} noValidate>
+                        <TextField
+                            id="datetime-local"
+                            label="Select Date"
+                            type="datetime-local"
+                            defaultValue={`${year}-${month}-${date}T${hour}:${minute}`}
+                            className={classes.textField}
+                            InputLabelProps={{
+                            shrink: true,
+                            }}
+                            InputProps= {{
+                                classes: {
+                                    input: classes.input,
+                                    underline: classes.underline
+                                }
+                            }}
+                        />
+                    </form>
+                </StylesProvider>
+            </MuiThemeProvider>
         </div>
     )
 }

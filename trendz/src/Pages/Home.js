@@ -17,6 +17,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Calendar from '../Components/Calendar';
 
 
+
 const useStyles = makeStyles((theme) => ({
     spacer: {
         height:"160px",
@@ -68,31 +69,31 @@ function Home() {
         if (data.length!==0) {
             elements.push(<Header time={data[0].time}/>)
             for (let i = 0; i <data[0].data.length; i++) {
-                if (data[0].data[i].type === 'tweet') {
+                if (data[0].data[i].type === 'tweet' && filterObject['TWEET']) {
                     data[0].data[i].position = i
                     elements.push(<Tweet data={data[0].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'reddit') {
+                else if (data[0].data[i].type === 'reddit' && filterObject['REDDIT']) {
                     data[0].data[i].position = i
                     elements.push(<RedditBlock data={data[0].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'movie') {
+                else if (data[0].data[i].type === 'movie' && filterObject['MOVIE']) {
                     data[0].data[i].position = i
                     elements.push(<MovieBlock data={data[0].data[i]}/>)
                 }
-                else if (data[0].data[i].type === 'tv') {
+                else if (data[0].data[i].type === 'tv' && filterObject['TV']) {
                     data[0].data[i].position = i
                     elements.push(<TvBlock data={data[0].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'spotify') {
+                else if (data[0].data[i].type === 'spotify' && filterObject['SPOTIFY']) {
                     data[0].data[i].position = i
                     elements.push(<SongBlock data={data[0].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'youtube') {
+                else if (data[0].data[i].type === 'youtube' && filterObject['YOUTUBE']) {
                     data[0].data[i].position = i
                     elements.push(<YoutubeBlock data={data[0].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'twitch') {
+                else if (data[0].data[i].type === 'twitch' && filterObject['TWITCH']) {
                     data[0].data[i].position = i
                     elements.push(<TwitchBlock data={data[0].data[i]} />)
                 }
@@ -110,8 +111,7 @@ function Home() {
             <div id="spacer" className={classes.spacer}></div>
             {/* <button onClick={event => {setDate("2020-09-20")}}>change to yesterday</button> */}
             {loading ? <WaveLoading/>: null}
-            {/* <button onClick={event => {dispatch({ type: 'SET_TWEET', payload: false })}}>toggle tweet filter test</button>
-            <button onClick={event => {console.log(filterObject)}}>check if tweet is filtered</button> */}
+            
             {/* <Calendar /> */}
             {/* <Header time={time}/> */}
             {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>

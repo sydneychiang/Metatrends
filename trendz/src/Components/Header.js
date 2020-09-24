@@ -12,6 +12,8 @@ import '../index.css';
 import { Hidden } from '@material-ui/core';
 import './Header.css';
 import Calendar from "../Components/Calendar";
+import DateTimePicker from "../Components/DateTimePicker";
+
 
 
 
@@ -93,12 +95,12 @@ function Header(time) {
     let newTime = new Date(time.time);
     let bar = document.getElementsByClassName("bar")[0];
     console.log("bar:", bar)
-    // let scroll = document.addEventListener("scroll", function(){
-    //     if(!toggle){
-    //         setToggle(!toggle);
-    //         barExpand(toggle, newTime);
-    //     }
-    // });
+    let scroll = document.addEventListener("scroll", function(){
+        if(!toggle){
+            setToggle(!toggle);
+            barExpand(toggle, newTime);
+        }
+    });
 
     // let click = document.addEventListener("click", function(event){
     //     var isClickInside = bar.contains(event.target);
@@ -114,7 +116,7 @@ function Header(time) {
     return (
         <div className="root">
         
-             <div id="testing" className="bar" onClick={() => {
+             <div id="testing" className="bar" onClick={(event) => {
                     setToggle(!toggle);
                     barExpand(toggle, newTime);               
                  }}>
@@ -122,7 +124,8 @@ function Header(time) {
                 <Toolbar>
                     <Grid container spacing={0} >
                         <Grid item xs={12}>
-                            <div className="title" onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                            <div className="title" >
+                            {/* onClick={window.scrollTo({ top: 0, behavior: 'smooth' })} */}
                                 metatrends
                             </div>
                         
@@ -138,8 +141,12 @@ function Header(time) {
                         <Grid item xs={12}>
                             <span id="lastUpdateString" className="date">
                             </span>
-                            <Calendar />
-                            <Filter />
+                            {/* <Calendar /> */}
+                            <div>
+                                <DateTimePicker />
+                                <Filter />
+                            </div>
+
 
                         </Grid>
                     </Grid>

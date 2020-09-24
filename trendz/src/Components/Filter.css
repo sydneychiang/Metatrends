@@ -1,10 +1,13 @@
 .filter {
-    /* background: red; */
-    /* max-width: 600px;
-    margin-left: auto;
-    margin-right:auto;
-    padding-left: 5%;
-    padding-right: 5%; */
+    border-radius: 25px !important;
+    max-width: 300px !important;
+    padding: 0.2em !important;
+    background-color: rgba(255,255,255,30%) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center !important;
+
+
 }
 
 .innerFilter {
@@ -21,4 +24,10 @@
 .listCSS{
     font-size: 60px!important;
     height: 30px;
+}
+
+.MuiListItem-dense{
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+
 }

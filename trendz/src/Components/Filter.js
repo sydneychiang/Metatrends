@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
+import './Filter.css';
 
 // import './Home.css';
 
@@ -27,7 +28,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: '21%',
+        maxWidth: '300px',
         margin: '0 auto',
     },
     check: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textStyle: {
       fontFamily: "Roboto!important",
-      fontSize: "15px",
+      fontSize: "18px",
       color: "white",
 
     },
@@ -51,9 +52,11 @@ function Filter() {
     const dispatch = useDispatch()
 
     const [checked, setChecked] = React.useState([1]);
-    const platforms = ['Movie', 'Reddit', 'Spotify', 'TV', 'Twitter', 'Twitch', 'YouTube'];
+    const platforms = ['Movie', 'Reddit', 'Spotify', 'TV', 'Tweet', 'Twitch', 'Youtube'];
+    const filterObject = useSelector(state => state.appReducers)
+
   
-    const handleToggle = (value) => () => {
+    const handleToggle = (value) => {
       const currentIndex = checked.indexOf(value);
       const newChecked = [...checked];
   
@@ -64,17 +67,18 @@ function Filter() {
       }
   
       setChecked(newChecked);
+      dispatch({ type: `SET_${platforms[value].toUpperCase()}`, payload: !filterObject[`${platforms[value].toUpperCase()}`] })
     };
   
     useEffect(()=> {
-        setChecked([0,1,2,3,4,5])
+        setChecked([0,1,2,3,4,5, 6])
     }, [])
 
 
     return (
-        <div id={classes.filter}>
+        <div className="filter">
             <List dense className={classes.root}>
-        {[0, 1, 2, 3, 4, 5].map((value) => {
+        {[0, 1, 2, 3, 4, 5, 6].map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
             <ListItem key={value} button >
@@ -83,9 +87,13 @@ function Filter() {
                 <Checkbox
                   className = {classes.check}
                   edge="end"
-                  onChange={handleToggle(value)}
+                  onClick={event => {
+                    handleToggle(value); 
+                    event.stopPropagation();
+                  }}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
+                  
                 />
               </ListItemSecondaryAction>
             </ListItem>
