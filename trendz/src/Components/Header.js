@@ -30,18 +30,6 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "1em",
         zIndex: "1",
     },
-    date: {
-        marginBottom: "2.5em",
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: "20px",
-        lineHeight: "23px",
-        letterSpacing: "0.06em",
-        color: "white",
-        textAlign: "center",
-
-    },
 
 }));
 
@@ -94,7 +82,6 @@ function Header(time) {
     const [toggle, setToggle] = useState(true);
     let newTime = new Date(time.time);
     let bar = document.getElementsByClassName("bar")[0];
-    console.log("bar:", bar)
     let scroll = document.addEventListener("scroll", function(){
         if(!toggle){
             setToggle(!toggle);
@@ -114,24 +101,27 @@ function Header(time) {
     // });
 
     return (
-        <div className="root">
+        <div className="root slide-bottom">
         
-             <div id="testing" className="bar" onClick={(event) => {
+             <div id="testing" className="bar" onClick={() => {
                     setToggle(!toggle);
                     barExpand(toggle, newTime);               
                  }}>
             
                 <Toolbar>
                     <Grid container spacing={0} >
-                        <Grid item xs={12}>
-                            <div className="title" >
+                        <Grid item xs={12} id="titleGrid">
+                            <div className="title" onClick={event=>{
+                                event.stopPropagation();
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}>
                             {/* onClick={window.scrollTo({ top: 0, behavior: 'smooth' })} */}
                                 metatrends
                             </div>
                         
                         </Grid>
                         <Grid item xs={12}>
-                            <p className={classes.date}>
+                            <p className="date">
                                 {getDateString()}
                             </p>
                         </Grid>

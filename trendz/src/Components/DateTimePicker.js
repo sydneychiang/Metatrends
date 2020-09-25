@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { DateTimePicker, KeyboardDateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import { makeStyles } from '@material-ui/core/styles';
 import './DateTimePicker.css'
 import './Filter.css'
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
@@ -34,27 +35,37 @@ function formatDateString(int){
 
 function InlineDateTimePickerDemo(props) {
     const classes = useStyles();
-    const [selectedDate, handleDateChange] = useState(new Date("2018-01-01T00:00:00.000Z"));
-    let d = new Date();
-    let date = formatDateString(d. getDate());
-    let month = formatDateString(d. getMonth() + 1); // Since getMonth() returns month from 0-11 not 1-12.
-    let year = d. getFullYear();
-    let hour = formatDateString(d.getHours());
-    let minute = formatDateString(d. getMinutes());
+    const [selectedDate, handleDateChange] = useState(new Date());
+    const dispatch = useDispatch()
+    const overallDate = useSelector(state => state.appReducers)
+    
+    // let d = new Date();
+    // let date = formatDateString(d. getDate());
+    // let month = formatDateString(d. getMonth() + 1); // Since getMonth() returns month from 0-11 not 1-12.
+    // let year = d. getFullYear();
+    // let hour = formatDateString(d.getHours());
+    // let minute = formatDateString(d. getMinutes());
+    useEffect(()=> {
+      dispatch({ type: `SET_DATE`, payload: selectedDate})
+    }, [selectedDate])
 
     return (
-        <div className="outerCircle filter">
+        <div className="outerCircle filter" onClick={event => {event.stopPropagation()}}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDateTimePicker
                     onClick={event => {event.stopPropagation()}}
                     variant="inline"
                     ampm={false}
                     // label="Travel back"
-                    value={`${year}-${month}-${date}T${hour}:${minute}`}
-                    onChange={handleDateChange}
+                    value={`${selectedDate.getFullYear()}-${formatDateString(selectedDate. getMonth() + 1)}-${formatDateString(selectedDate.getDate())}T${formatDateString(selectedDate.getHours())}:${formatDateString(selectedDate. getMinutes())}`}
+                    onChange={ event => {
+                        handleDateChange(event);
+                        
+                    }}
                     onError={console.log}
-                    minDate={new Date("2018-01-01T00:00")}
+                    minDate={new Date("2020-09-17T00:00")}
                     format="MM/dd/yyyy HH:mm"
+                    disableFuture
                 />
             </MuiPickersUtilsProvider>
         </div>

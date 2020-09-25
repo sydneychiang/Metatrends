@@ -6,6 +6,7 @@ const initalState = {
     SPOTIFY: true,
     YOUTUBE: true,
     TWITCH: true,
+    date: 'testttt'
 }
 
 export default function appReducers(state = initalState, action) {
@@ -24,6 +25,8 @@ export default function appReducers(state = initalState, action) {
             return { ...state, YOUTUBE:action.payload }
         case 'SET_TWITCH':
             return { ...state, TWITCH:action.payload }
+        case 'SET_DATE':
+            return { ...state, date:action.payload }
 
         default:
             return { ...state }
