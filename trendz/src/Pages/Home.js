@@ -35,7 +35,7 @@ function Home() {
     
     const dispatch = useDispatch();
     const filterObject = useSelector(state => state.appReducers)
-    const getData = async (link="https://habitual.live:9000/getRecentTrendingData") => {
+    const getData = async (link="https://metatrends.live/api/getRecentTrendingData") => {
         setLoading(true)
         let response;
         try {
@@ -55,7 +55,7 @@ function Home() {
     useEffect(() => {
         let mydate = new Date();
         console.log(filterObject.date)
-        getData(`https://habitual.live:9000/getRecentTrendingDataByDate?targetDate=${mydate}`);
+        getData(`https://metatrends.live/api/getRecentTrendingDataByDate?targetDate=${mydate}`);
         // getData();
 
         // onload
