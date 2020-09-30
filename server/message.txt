@@ -1,0 +1,140 @@
+app.get("/getRecentTrendingData", (req, res)=> {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-XSRF-TOKEN');
+    mongo.getRecentTrendingData((result) => {
+        let movieMathObject = {
+            counter: 0,
+            score: 0 ,
+            average: 0,
+            standard_deviation: 0,
+            ratings: [],
+        }
+
+        let youtubeMathObject = {
+            video_counter: 0,
+            youtube_score: 0,
+            average: 0,
+            standard_deviation: 0,
+            youtube_ratings: [],
+
+        }
+
+        let twitterMathObject = {
+            tweet_counter: 0,
+            total_rt_and_likes: 0,
+            standard_deviation: 0,
+            average: 0,
+            rt_and_likes: [],
+        }
+
+        let TVMathObject = {
+            counter: 0,
+            score: 0,
+            average: 0,
+            standard_deviation: 0,
+            ratings: [],
+        }
+
+        let redditMathObject = {
+            reddit_counter: 0,
+            reddit_score: 0, 
+            average: 0,
+            standard_deviation : 0,
+            reddit_ratings: [],
+        }
+
+
+        let spotifyMathObject = {
+            spotify_counter: 0,
+            spotify_score: 0,
+            average : 0,
+            standard_deviation : 0,
+            spotify_ratings: [],
+        }
+
+        let twitchMathObject = {
+            twitch_counter: 0,
+            twitch_score: 0,
+            average: 0,
+            standard_deviation: 0,
+            twitch_ratings: [],      
+        }
+
+        
+        
+        for (let i = 0; i < result.data.length; i++) {
+            switch (result.data[i].type) {
+                case "movie":
+                    pMath.getTVOrMoviePopularity(result, movieMathObject, i)
+                    break;
+                case "tv":
+                    pMath.getTVOrMoviePopularity(result, TVMathObject, i)
+                    break;
+                case "youtube":
+                    pMath.getYoutubePopularity(result, youtubeMathObject, i)
+                    break;
+                case "reddit":
+                    pMath.getRedditPopularity(result, redditMathObject, i)
+                    break;
+                case "spotify":
+                    pMath.getSpotifyPopularity(result, spotifyMathObject, i)
+                    break;
+                case "twitch":
+                    pMath.getTwitchPopularity(result, twitchMathObject, i)
+                    break;
+                case "tweet":
+                    pMath.getTwitterPopularity(result, twitterMathObject, i)
+                    break;
+                default:
+                    break
+            }   
+        } 
+
+        movieMathObject.average = (movieMathObject.score/movieMathObject.counter)
+        movieMathObject.standard_deviation = math.std(movieMathObject.ratings)
+        youtubeMathObject.average = youtubeMathObject.youtube_score/youtubeMathObject.video_counter
+        youtubeMathObject.standard_deviation = math.std(youtubeMathObject.youtube_ratings)
+        twitterMathObject.average = (twitterMathObject.total_rt_and_likes/twitterMathObject.tweet_counter)
+        twitterMathObject.standard_deviation = math.std(twitterMathObject.rt_and_likes)
+        TVMathObject.average = (TVMathObject.score/TVMathObject.counter)
+        TVMathObject.standard_deviation = math.std(TVMathObject.ratings)
+        redditMathObject.average = (redditMathObject.reddit_score/redditMathObject.reddit_counter)
+        redditMathObject.standard_deviation = math.std(redditMathObject.reddit_ratings)
+        spotifyMathObject.average = (spotifyMathObject.spotify_score/spotifyMathObject.spotify_counter)
+        spotifyMathObject.standard_deviation = math.std(spotifyMathObject.spotify_ratings)
+        twitchMathObject.average = (twitchMathObject.twitch_score/twitchMathObject.twitch_counter)
+        twitchMathObject.standard_deviation = math.std(twitchMathObject.twitch_ratings)
+        
+
+        for(let i = 0; i < result.data.length; i++)
+        {
+            switch (result.data[i].type) {
+                case "movie":
+                    pMath.getTrendScore(result, movieMathObject, i)
+                    break;
+                case "tv":
+                    pMath.getTrendScore(result, TVMathObject, i)
+                    break;
+                case "youtube":
+                    pMath.getTrendScore(result, youtubeMathObject, i)
+                    break;
+                case "reddit":
+                    pMath.getTrendScore(result, redditMathObject, i)
+                    break;
+                case "spotify":
+                    pMath.getTrendScore(result, spotifyMathObject, i)
+                    break;
+                case "twitch":
+                    pMath.getTrendScore(result, twitchMathObject, i)
+                    break;
+                case "tweet":
+                    pMath.getTrendScore(result, twitterMathObject, i)
+                    break;
+            } 
+        }
+        result.data.sort((a,b) => (a.trendScore < b.trendScore) ? 1 : -1);
+        res.send(result)
+    })
+})
