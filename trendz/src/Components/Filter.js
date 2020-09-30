@@ -36,12 +36,7 @@ const useStyles = makeStyles((theme) => ({
       opacity: "80%",
 
     },
-    textStyle: {
-      fontFamily: "Roboto!important",
-      fontSize: "18px",
-      color: "white",
 
-    },
     filter: {
       width: "40%",
     },
@@ -76,24 +71,23 @@ function Filter() {
 
 
     return (
-        <div className="filter">
+        <div className="filter"  onClick={event=>{event.stopPropagation()}}>
             <List dense className={classes.root}>
         {[0, 1, 2, 3, 4, 5, 6].map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
-            <ListItem key={value} button >
-              <ListItemText id={labelId}  primary={<span className={classes.textStyle}>{`${platforms[value]}`}</span>}/>
+            <ListItem key={value} button>
+              <ListItemText id={labelId}  primary={<span className="textStyle">{`${platforms[value]}`}</span>}/>
               <ListItemSecondaryAction>
                 <Checkbox
                   className = {classes.check}
                   edge="end"
                   onClick={event => {
-                    handleToggle(value); 
                     event.stopPropagation();
+                    handleToggle(value); 
                   }}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
-                  
                 />
               </ListItemSecondaryAction>
             </ListItem>

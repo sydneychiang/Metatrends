@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Comfortaa:wght@500&display=swap');
+
 .outerCircle{
     /* background-opacity: 30%; */
     margin-left: auto !important;
@@ -10,14 +12,14 @@
 
 .MuiFormLabel-root {
     /* color: white !important; */
-    font-family: "Roboto" !important;
+    font-family: "Barlow" !important;
     font-size: 18px !important;
 
 }
 
 .MuiInput-input {
     color: white !important;
-    font-family: "Roboto" !important;
+    font-family: "Barlow" !important;
     font-size: 18px !important;
 
 }
@@ -36,7 +38,7 @@
 }
 
 .PrivateTabIndicator-colorSecondary-14{
-    background-color: #91B7D9 !important;
+    background-color: #C68BDF !important;
 }
 
 .MuiIconButton-root{
@@ -60,8 +62,39 @@
     color: black !important;
 }
 
-.MuiPickersDay-current{
+.MuiPickersDay-daySelected{
     color: white !important;
+    background-color: #8869A5 !important;
 
 }
 
+.MuiPickersClock-pin{
+    background-color: #8869A5 !important; 
+}
+
+.MuiPickersClockPointer-pointer{
+    background-color: #8869A5 !important; 
+}
+
+.MuiPickersClockPointer-noPoint{
+    background-color: #8869A5 !important; 
+}
+
+.MuiPickersClockPointer-thumb{
+    background-color: #8869A5 !important; 
+    border-color: #8869A5 !important;
+}
+
+.MuiPickersCalendarHeader-iconButton{
+    color: rgba(0, 0, 0, 0.38) !important;
+}
+
+.MuiFormHelperText-root.Mui-error{
+    font-family: "Barlow" !important;
+    color: #8869A5 !important;
+    font-size: 15px;
+}
+
+.MuiFormHelperText-root{
+    margin-top: 0px !important;
+}

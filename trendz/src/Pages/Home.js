@@ -14,7 +14,8 @@ import { WaveLoading } from 'react-loadingg';
 import './Home.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import Calendar from '../Components/Calendar';
+// import Calendar from '../Components/Calendar';
+import Footer from '../Components/Footer'
 
 
 
@@ -31,17 +32,16 @@ function Home() {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false);
-    const [date, setDate] = useState();
+    
     const dispatch = useDispatch();
     const filterObject = useSelector(state => state.appReducers)
-
     const getData = async (link="https://habitual.live:9000/getRecentTrendingData") => {
         setLoading(true)
         let response;
         try {
             response = await axios.get(link);
+            console.log('HELLOOOOOOOO', response)
             setData(data.concat(response.data))
-
         } catch(err) {
             console.log(err)
         }
@@ -54,12 +54,13 @@ function Home() {
 
     useEffect(() => {
         let mydate = new Date();
+        console.log(filterObject.date)
         getData(`https://habitual.live:9000/getRecentTrendingDataByDate?targetDate=${mydate}`);
         // getData();
 
         // onload
         // displayData();
-    }, [date])
+    }, [filterObject.date])
 
     const [showFilter, setShowFilter] = useState(false);
 
@@ -98,7 +99,7 @@ function Home() {
                     elements.push(<TwitchBlock data={data[0].data[i]} />)
                 }
             }
-            
+            elements.push(<Footer />)
         }
         return elements
     }
@@ -109,14 +110,14 @@ function Home() {
         <div >
             
             <div id="spacer" className={classes.spacer}></div>
+            {/* <button onClick={event=>{console.log(filterObject.date)}}>click here :)</button> */}
+
             {/* <button onClick={event => {setDate("2020-09-20")}}>change to yesterday</button> */}
             {loading ? <WaveLoading/>: null}
             
-            {/* <Calendar /> */}
-            {/* <Header time={time}/> */}
-            {/* <button className="filterButton" onClick={event => {setShowFilter(!showFilter)}}>Sort <span className="leftAlign">{'\u25bc'}</span></button>
-            {showFilter?<Filter /> : null} */}
+            
             {displayData().map(item =>(item))}
+
         </div>
     )
 }
