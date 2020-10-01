@@ -1,22 +1,27 @@
 
-//const math = require('mathjs');
+const math = require('mathjs');
 const cron = require("node-cron")
-//const fs = require('fs');
-//const fileType = require('file-type');
+const fs = require('fs');
+const fileType = require('file-type');
 const bluebird = require('bluebird');
-//const multiparty = require('multiparty');
-//const path = require('path');
+const multiparty = require('multiparty');
+const path = require('path');
 const express = require('express');
 const http = require('http');
-//const https = require('https');
+const https = require('https');
 const router = require('./router');
-const mongo = require('./trends-helper');
-const pMath = require('./platformMath');
-//const { response } = require("express");
-//const { getRecentTrendingData_NEW } = require('./trends-helper');
+const mongo = require('./mongoFunctions/helper');
+const pMath = require('./mongoFunctions/platformMath');
+const { response } = require("express");
 
 const app = express();
-const server = http.createServer(app);
+//const server = http.createServer(app);
+const server = https.createServer({
+    key: fs.readFileSync('private.key'),
+    cert: fs.readFileSync('habitual_live.crt'),
+    passphrase: 'habit'
+}, app)
+
 require('dotenv').config();
 
 async function main() {
@@ -35,7 +40,7 @@ app.get('/', function (req, res) {
 app.use(router);
 
 
-app.get("/getRecentTrendingData", (req, res) => {
+app.get("/getRecentTrendingData_NEW", (req, res) => {
     res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
@@ -45,18 +50,12 @@ app.get("/getRecentTrendingData", (req, res) => {
     res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-XSRF-TOKEN');
     let previousDate = new Date(new Date().getTime() - (3*60*60*1000))
-    console.log(req.query.targetDate);
-    if (req.query.targetDate === null)
-    {
-        mongo.getRecentTrendingData_NEW(req.query.targetDate, (new_result) => {
-            mongo.getRecentTrendingData_NEW(previousDate, (old_result) => {
-                pMath.compareArrays(old_result, new_result)
-                res.send(new_result)
-            })
+    mongo.getRecentTrendingData_NEW(req.query.targetDate, (new_result) => {
+        mongo.getRecentTrendingData_NEW(previousDate, (old_result) => {
+            pMath.compareArrays(old_result, new_result)
+            res.send(new_result)
         })
-    } else {
-        mongo.getRecentTrendingData_NEW(req.query.targetDate, (new_result) => {res.send(new_result)});
-    }
+    })
          
 })
 app.get("/searchRecentTrendingDataUnique", (req, res) => {
@@ -406,7 +405,7 @@ function getTwitterData() {
     
 
 }
-cron.schedule("1 */3 * * *", function () {
+cron.schedule("*/30 * * * *", function () {
     console.log("starting fetch cycle");
     try {
         getRedditData()

@@ -43,37 +43,33 @@ function saveToSql(dataObject){
         });
         */
         dataResponse.forEach(element => {
-            // console.log(element);
             if (element.type == "movie")
             {
                 const qry = `INSERT INTO movie (type, time_stamp, trendScore, popularity, adult, original_title, original_language, overview, link, image) 
                     VALUES ("${element.type}", "${TimeST}", ${element.trendScore}, ${element.popularity}, ${element.adult}, "${element.original_title}", 
-                        "${element.original_language}", "${element.overview}", "${element.link}", "${element.image}");`;
+                        "${element.original_language}", "${main.escape(element.overview)}", "${element.link}", "${element.image}");`;
 
                 main.query(qry, function (err, result) {
                     if (err) throw err;
-                    //console.log(err);
-                    // console.log("dataresponseParsing: 52", result);
                 });
             } 
-            /*
+            
             else if (element.type == "tv")
             {
                 const qry = `INSERT INTO tv (type, time_stamp, trendScore, popularity, original_title, overview, link, image, first_air_date) 
                     VALUES ('${element.type}', '${TimeST}', ${element.trendScore}, ${element.popularity}, 
-                        '${element.original_title}', '${element.overview}', '${element.link}', '${element.image}', '${element.first_air_date}');`;
+                        '${main.escape(element.original_title)}', '${main.escape(element.overview)}', '${element.link}', '${element.image}', '${element.first_air_date}');`;
 
                 main.query(qry, function (err, result) {
                     if (err) throw err;
                 });
             }
-            */
+            
             //text in tweet needs to be concatanated 
             /*
 
             else if (element.type == "tweet")
             {
-                console.log(element.profile_image);
                 const qry  = `INSERT INTO tweet (type, time_stamp, trendScore, popularity, profile_image, retweet_count, favorite_count, created_at, user_name, screen_name, text, link, status) 
                     VALUES ("${element.type}", "${TimeST}", ${element.trendScore}, ${element.popularity}, "${element.profile_image}", ${element.retweet_count}, ${element.favorite_count}, 
                         "${element.created_at}", "${element.user_name}", "${element.screen_name}", "${element.text}", "${element.link}", "${element.status}");`;
@@ -100,7 +96,6 @@ function saveToSql(dataObject){
                 
                 let LATEST_ENTRY_PK;
                 //add to spotfiy database
-                console.log(element);
                 const mainQry = `INSERT INTO spotify (type, time_stamp, trendScore,  name, link, popularity) 
                     VALUES ("${element.type}", "${TimeST}", ${element.trendScore}, "${element.name}", "${element.link}", ${element.popularity});`
             
@@ -141,7 +136,6 @@ function saveToSql(dataObject){
             /*
             else if (element.type == "reddit")
             {
-                console.log(element);
                 const qry = `INSERT INTO reddit (type, time_stamp, trendScore, popularity, author, thumbnail, image, subreddit, title, link, upvotes) 
                     VALUES ("${element.type}", "${TimeST}", ${element.trendScore}, ${element.popularity}, "${element.author}", "${element.thumbnail}", "${element.image}", "${element.subreddit}", 
                         "${element.title}", "${element.link}", ${element.upvotes});`
@@ -153,7 +147,6 @@ function saveToSql(dataObject){
             
             else if (element.type == "youtube")
             {
-                console.log(element);
                 const qry = `INSERT INTO youtube (type, time_stamp, trendScore, popularity, title, channelTitle, publishedAt, link, viewCount) 
                     VALUES ("${element.type}", "${TimeST}", ${element.trendScore}, ${element.popularity}, "${element.title}", "${element.channelTitle}", 
                     "${element.publishedAt}", "${element.link}", ${element.view_count.viewCount});`
