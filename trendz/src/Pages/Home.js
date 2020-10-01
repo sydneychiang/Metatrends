@@ -5,7 +5,6 @@ import Header from '../Components/Header';
 import RedditBlock from '../Components/RedditBlock';
 import MovieBlock from '../Components/MovieBlock';
 import TvBlock from '../Components/TvBlock';
-// import VideoGameBlock from '../Components/VideoGameBlock';
 import SongBlock from '../Components/SongBlock';
 import YoutubeBlock from '../Components/YoutubeBlock';
 import TwitchBlock from '../Components/TwitchBlock';
@@ -30,6 +29,15 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
     const classes = useStyles();
 
+
+    const [headerOpen, setHeaderOpen] = useState(false);
+    
+    
+    // footerOpen false means the footer is closes, footerOpen
+    // true means the footer is open 
+    const [footerOpen, setFooterOpen] = useState(false);
+
+
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false);
     
@@ -40,8 +48,10 @@ function Home() {
         let response;
         try {
             response = await axios.get(link);
-            console.log('HELLOOOOOOOO', response)
-            setData(data.concat(response.data))
+
+            console.log(response)
+            setData([...data, response.data]);
+            
         } catch(err) {
             console.log(err)
         }
@@ -49,15 +59,15 @@ function Home() {
     }
 
     useEffect(() => {
-        console.log(filterObject);
-    }, [])
+        console.log(filterObject.searchData)
+    }, [filterObject])
 
     useEffect(() => {
-        let mydate = new Date();
+        let mydate = new Date(filterObject.date);
         console.log(filterObject.date)
-        getData(`https://metatrends.live/api/getRecentTrendingDataByDate?targetDate=${mydate}`);
+        getData(`https://metatrends.live/api/getRecentTrendingData?targetDate=${mydate}`);
         // getData();
-
+        console.log(data)
         // onload
         // displayData();
     }, [filterObject.date])
@@ -65,41 +75,44 @@ function Home() {
     const [showFilter, setShowFilter] = useState(false);
 
     const displayData = (filter) => {
-        // console.log(data)
+        console.log(data)
+        let ls = data.length - 1
+        
         let elements = []
         if (data.length!==0) {
-            elements.push(<Header time={data[0].time}/>)
-            for (let i = 0; i <data[0].data.length; i++) {
-                if (data[0].data[i].type === 'tweet' && filterObject['TWEET']) {
-                    data[0].data[i].position = i
-                    elements.push(<Tweet data={data[0].data[i]} />)
+            elements.push(<Header time={data[ls].time}/>)
+            // headerOpen={headerOpen} setHeaderOpen={setHeaderOpen} footerOpen={footerOpen} setFooterOpen={setFooterOpen}
+            for (let i = 0; i <data[ls].data.length; i++) {
+                if (data[ls].data[i].type === 'tweet' && filterObject['TWEET']) {
+                    data[ls].data[i].position = i
+                    elements.push(<Tweet data={data[ls].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'reddit' && filterObject['REDDIT']) {
-                    data[0].data[i].position = i
-                    elements.push(<RedditBlock data={data[0].data[i]} />)
+                else if (data[ls].data[i].type === 'reddit' && filterObject['REDDIT']) {
+                    data[ls].data[i].position = i
+                    elements.push(<RedditBlock data={data[ls].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'movie' && filterObject['MOVIE']) {
-                    data[0].data[i].position = i
-                    elements.push(<MovieBlock data={data[0].data[i]}/>)
+                else if (data[ls].data[i].type === 'movie' && filterObject['MOVIE']) {
+                    data[ls].data[i].position = i
+                    elements.push(<MovieBlock data={data[ls].data[i]}/>)
                 }
-                else if (data[0].data[i].type === 'tv' && filterObject['TV']) {
-                    data[0].data[i].position = i
-                    elements.push(<TvBlock data={data[0].data[i]} />)
+                else if (data[ls].data[i].type === 'tv' && filterObject['TV']) {
+                    data[ls].data[i].position = i
+                    elements.push(<TvBlock data={data[ls].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'spotify' && filterObject['SPOTIFY']) {
-                    data[0].data[i].position = i
-                    elements.push(<SongBlock data={data[0].data[i]} />)
+                else if (data[ls].data[i].type === 'spotify' && filterObject['SPOTIFY']) {
+                    data[ls].data[i].position = i
+                    elements.push(<SongBlock data={data[ls].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'youtube' && filterObject['YOUTUBE']) {
-                    data[0].data[i].position = i
-                    elements.push(<YoutubeBlock data={data[0].data[i]} />)
+                else if (data[ls].data[i].type === 'youtube' && filterObject['YOUTUBE']) {
+                    data[ls].data[i].position = i
+                    elements.push(<YoutubeBlock data={data[ls].data[i]} />)
                 }
-                else if (data[0].data[i].type === 'twitch' && filterObject['TWITCH']) {
-                    data[0].data[i].position = i
-                    elements.push(<TwitchBlock data={data[0].data[i]} />)
+                else if (data[ls].data[i].type === 'twitch' && filterObject['TWITCH']) {
+                    data[ls].data[i].position = i
+                    elements.push(<TwitchBlock data={data[ls].data[i]} />)
                 }
             }
-            elements.push(<Footer />)
+            elements.push(<Footer footerOpen={footerOpen} setFooterOpen={setFooterOpen}/>)
         }
         return elements
     }
@@ -110,9 +123,6 @@ function Home() {
         <div >
             
             <div id="spacer" className={classes.spacer}></div>
-            {/* <button onClick={event=>{console.log(filterObject.date)}}>click here :)</button> */}
-
-            {/* <button onClick={event => {setDate("2020-09-20")}}>change to yesterday</button> */}
             {loading ? <WaveLoading/>: null}
             
             

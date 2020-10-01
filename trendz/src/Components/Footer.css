@@ -61,28 +61,46 @@
               transform-origin: 0% 100%;
     }
   }
-  
+
+ @-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+}
 
 
 .footer{
     background-color: #C1D9D4;
     text-align: center;
-    padding: 1.5em;
+    padding-top: 0.8em;
     font-family: "Barlow";
     font-size: 25px;
     color: white;
-
-    height: 2.2em;
-
+    /* z-index: -1; */
+    height: 75px;
     position:relative;
-    clear: both;
-    /* position:absolute;
-    bottom: 0; */
 
-    /* -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
-	-webkit-animation: scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+}
+
+.footerAnimationUp{
+  -webkit-animation: scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-ver-bottom 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .footerBtn{
@@ -97,22 +115,29 @@
 }
 
 .card{
-    border-radius: 20px;
+    position: fixed;
+    text-align: center;
     font-family: "Barlow";
+    font-size: 25px;
+    color: white;
+    border-radius: 20px;
+    overflow-y:auto;
     height: 460px;
-    width: 460px;
+    width: 50%;
     display: none;
     margin: 0 auto;
-    background-color:  rgba(177,190,235,80%);
+    background-color:  rgba(177,190,235,100%);
     margin-bottom: 1.5em;
     padding: 1em;
+    z-index: 1;
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
 
 #aboutCard{
-    background-color: rgba(198,139,223,50%) !important;
+    /* background-color: rgba(198,139,223,50%) !important; */
+    background-color: #C3B2DA !important;
 }
 
 .cardTitle{
@@ -122,7 +147,7 @@
 }
 
 .aboutTitle{
-    margin-top: 0.7em !important;
+    margin-top: 0.5em !important;
 }
 
 .tosButton{
@@ -148,3 +173,42 @@
 .linkedin:hover{
     opacity: 70%;
 }
+
+.popupCard{
+    top: 18%;
+    left: 25%;
+    display: inline-block;
+    position: fixed;
+}
+
+.minimize{
+  cursor:pointer;
+  padding-left: 0.6em;
+}
+
+.rotate{
+  /* font-family: "Comfortaa"; */
+  transform: rotate( -180deg );            
+  transition: transform 0.6s ease;
+
+}
+
+.notrotate{
+  cursor:pointer;
+  padding-left: 0.8em;
+  text-align: left;
+  font-family: "Comfortaa";
+  transition-duration: 0.6s;
+  transition: ease;
+}
+
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+@-moz-keyframes spin { 50% { -moz-transform: rotate(-180deg); } }
+@-webkit-keyframes spin { 50% { -webkit-transform: rotate(-180deg); } }
+@keyframes spin { 50% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
