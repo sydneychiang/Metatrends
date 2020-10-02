@@ -9,12 +9,10 @@ import TvBlock from '../Components/TvBlock';
 import SongBlock from '../Components/SongBlock';
 import YoutubeBlock from '../Components/YoutubeBlock';
 import TwitchBlock from '../Components/TwitchBlock';
-import Filter from '../Components/Filter';
 import { WaveLoading } from 'react-loadingg';
 import './Home.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-// import Calendar from '../Components/Calendar';
 import Footer from '../Components/Footer'
 
 
@@ -174,7 +172,7 @@ function Home() {
         <div >
             <div className="adjustFooter" >
                 <div id="spacer" className={classes.spacer}></div>
-                {loading ? <WaveLoading/>: null}
+                {loading ? <WaveLoading />: null}
             
                 {filterObject.searchLength !== 0 ? displaySearchData(filterObject.searchData).map(item =>(item)) : displayData(data).map(item =>(item))}
             </div>
