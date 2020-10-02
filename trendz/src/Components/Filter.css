@@ -42,8 +42,14 @@
 
 }
 
+.MuiInputBase-input{
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+
 .textStyle{
     font-family: "Barlow" !important;
     font-size: 18px;
     color: white;
 }
+

@@ -47,7 +47,7 @@ function Filter() {
     const dispatch = useDispatch()
 
     const [checked, setChecked] = React.useState([1]);
-    const platforms = ['Movie', 'Reddit', 'Spotify', 'TV', 'Twitter', 'Twitch', 'Youtube'];
+    const platforms = ['Movie', 'Reddit', 'Spotify', 'TV', 'Tweet', 'Twitch', 'Youtube'];
     const filterObject = useSelector(state => state.appReducers)
 
   

@@ -16,8 +16,10 @@ function YoutubeBlock(data) {
                         <img src={data.data.thumbnails.high.url} alt="" align="left" className="youtubeImage"/> 
                     </div>
                     <span className="mediaType videoGame">Youtube</span>
-                    <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1} Trend Score:{" " +Math.round((data.data.trendScore * 1000)+5000)}</span>
-                    
+                    <span className="trend">
+                        <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+                        <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
+                    </span>
                     <span className="blockTitle">{data.data.channelTitle}<span className="Handle"> {localTime}</span></span>
                     <span className="description">{data.data.title}</span>
                 </a>

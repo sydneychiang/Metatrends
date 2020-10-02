@@ -49,17 +49,12 @@ span {
     margin-right:auto;
     padding-left: 5%;
     padding-right: 5%;
-    
     cursor: pointer; 
-    /* overflow-x: hidden; */
-    /* transition: ease-in-out;
-    transition-duration: 0.5s; */
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    /* z-index: 0; */
+    position: relative;
 }
-
-
-
 
 .Block:hover{
   transform: translate3d(0px, -5px, 0px), slide-top paused;
@@ -80,12 +75,37 @@ span {
     display: inline-block;
 }
 
+.trend{
+    float:right;
+}
+
 .trendingNum {
     font-size: 12px;
     color: #464745;
-    /* opacity: 90%; */
     float: right;
+    /* z-index: -2; */
 }
+
+.trendScoreExplanation{
+    display: none;
+    position: fixed;
+    font-size: 12px;
+    /* z-index: 3; */
+    background: rgb(212, 212, 212);
+    border-radius: 10px;
+    max-width: 150px;
+    float: right;
+    text-align: center;
+    padding: 1em;
+    /* margin-top: 1.2em; */
+    color: black;
+    
+}
+
+.trendingNum:hover + .trendScoreExplanation{
+    display: block;
+}
+
 
 .blockTitle {
     font-size: 20px;
@@ -100,7 +120,6 @@ span {
     flex: 1;
     overflow: hidden;
 }
-
 
 .circlePhoto {
     border-radius: 50%;
@@ -126,41 +145,21 @@ span {
 }
 
 .youtubeImage {
-
     width: 4em;
     object-fit: cover;
-
-    /* transform: translateY(-12px);  */
-    /* height: 6em; */
-   
     border-radius: 4px;
     height: 2.2em;
     margin-right: 0.8em;
     margin-bottom: 1em;
     margin-top: 0.3em;
     border-radius: 4px;
-
     filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-
-
-    
 }
 
 .twitchTitle{
     padding-bottom: 0.8em;
 
 }
-
-
-/* 
-.hashtag {
-    color: #4C9EEB;
-    cursor: pointer;
-    text-decoration: none;
-}
-.hashtag:hover {
-    text-decoration: underline;
-} */
 
 .reddit{
     color: #669693;
@@ -176,10 +175,6 @@ span {
 
 .twitterPost {
     color: #4C77C9;
-}
-
-.videoGame{
-    color: #D7A252;
 }
 
 .song{

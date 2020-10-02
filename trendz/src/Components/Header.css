@@ -68,7 +68,7 @@
 }
 
 .title:hover{
-    opacity: 70%;
+    color: #E3EDF3;
 }
 
 
@@ -155,6 +155,40 @@
     text-align: center;
 }
 
-/* .minimize{
-    text-align: left;
-} */
+.searchBar{
+    height: 2em;
+    padding: 0.2em;
+    padding-left: 1.5em !important;
+    padding-right: 2em;
+    font-family: "Barlow";
+    color: white;
+    font-size: 18px;
+    border-radius: 25px;
+    width: 100%;
+
+    background-color: rgba(255,255,255,30%);
+    text-align: left ;
+    border: none;
+    box-sizing: border-box;
+}
+
+.searchBar:focus{
+    outline: none;
+}
+
+
+
+.outerSearch{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    max-width: 300px;
+}
+
+::placeholder{
+    color: white;
+}
+
+#lastUpdateString{
+    margin-bottom: 0.5em;
+}

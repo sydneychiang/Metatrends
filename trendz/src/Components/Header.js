@@ -16,7 +16,7 @@ import DateTimePicker from "../Components/DateTimePicker";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
-
+let timeStore = "loading"
 const useStyles = makeStyles((theme) => ({
     arrow: {
         // textAlign: "center",
@@ -44,24 +44,50 @@ function getDateString(){
 
 
 
-function barExpand(isActive, time, originalBarHeight){
+function barExpand(isActive, time, originalBarHeight, setHeaderOpen, footerOpen, setFooterOpen){
     let bar = document.getElementsByClassName("bar")[0];
     let animate = document.getElementById("animate");
+
+    // if (footerOpen){
+    //     setFooterOpen(false);
+    //     console.log(footerOpen);
+    // }
 
     if(isActive){
         //expand
         bar.style.transitionDuration = "0.6s";
         openHeader(bar, animate, time, originalBarHeight);
-        
+        setHeaderOpen(true);
     }
     else{
         //close
         bar.style.transitionDuration = "0.4s";
         minimizeHeader(bar, animate, originalBarHeight);
+        setHeaderOpen(false);
     }
 }
 
 
+function updateHeaderString(time){
+    let lastUpdate = document.getElementById("lastUpdateString")
+    let today = new Date();
+    let update = Math.abs( today - time) / (36e5/60);
+    
+    if( update > 60*24*30){
+        lastUpdate.textContent = "Viewing data from approximately" + Math.round(update/(60*24*30)) + (Math.round(update/(60*24*30)) == 1 ? " month ago" : " months ago") ;
+    }
+    else if (update > 60*24){
+        lastUpdate.textContent = "Viewing data from " + Math.round(update/(60*24)) + (Math.round(update/(60*24)) == 1 ? " day ago" : " days ago");
+    }
+    else if (update > 60){
+        lastUpdate.textContent = "Viewing data from " + Math.round(update/60) + (Math.round(update/(60)) == 1 ? " hour ago" : " hours ago");
+    } else if (time == "search") {
+        lastUpdate.textContent = "Showing search results..."
+    }
+    else{
+        lastUpdate.textContent = "Viewing data from " + Math.round(update) + (Math.round(update) == 1 ? " minute ago" : " minutes ago");
+    }
+}
 
 function scrollFunction() {
     let bar = document.getElementsByClassName("bar")[0];
@@ -83,15 +109,8 @@ function scrollFunction() {
 }
 
 function openHeader(bar, animate, time, barHeight){
-    let lastUpdate = document.getElementById("lastUpdateString");
     bar.style.height = "40em";
-    let today = new Date();
-    let update = Math.abs( today - time) / (36e5/60);
-    if (update > 60){
-        lastUpdate.textContent = "Last updated " + Math.round(update/60) + " hours ago";
-    }else{
-        lastUpdate.textContent = "Last updated " + Math.round(update) + " minutes ago";
-    }
+    updateHeaderString(time);
     
     animate.className = "rotate";
     if(barHeight){
@@ -112,11 +131,11 @@ function minimizeHeader(bar, animate, barHeight){
     animate.className = "notrotate";
 }
 
-function Header(time) {
+function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
     const classes = useStyles();
     const dispatch = useDispatch()
 
-
+    const filterObject = useSelector(state => state.appReducers)
 
     // false is original height, true is small height
     const [barHeight, setBarHeight] = useState(false);
@@ -124,14 +143,25 @@ function Header(time) {
     const [searchData, setSearchData] = useState([]);
     //toggle is true if header is closed, false if header is open
     const [toggle, setToggle] = useState(true);
+    const [newTime, setNewTime] = useState(new Date(time));
+    useEffect(() => {
+        if (time == "search") {
+            setNewTime("search")
+        } else {
+            setNewTime(new Date(time))
+        }
+    }, [time])
 
-
-    let newTime = new Date(time.time);
+    useEffect(()=> {
+        updateHeaderString(filterObject.date)
+    }, [filterObject.date])
+   
+    
     let bar = document.getElementsByClassName("bar")[0];
     let scroll = document.addEventListener("scroll", function(){
         if(!toggle){
             setToggle(!toggle);
-            barExpand(toggle, newTime, barHeight);
+            barExpand(toggle, newTime, barHeight, setHeaderOpen);
         }
     });
 
@@ -141,22 +171,38 @@ function Header(time) {
     };
 
     async function changeSearch(keywords){
-        const link = `https://metatrends.live/api/searchRecentTrendingDataUnique?keywords=${keywords}`
-        axios.get(link).then(response => {
-            console.log(response.data.data)
-            dispatch({ type: 'SET_SEARCH_DATA', payload: response.data.data})
-        });
+        if (keywords.length < 50) {
+            const link = `https://metatrends.live/api/searchRecentTrendingDataUnique?keywords=${keywords}`
+            axios.get(link).then(response => {
+            dispatch({ type: 'SET_SEARCH_LENGTH', payload: keywords.length})
+            dispatch({ type: 'SET_SEARCH_DATA', payload: response.data})
+            dispatch({ type: 'SET_TIME', payload: response.data.time})
+            let lastUpdate = document.getElementById("lastUpdateString");
+            //console.log(response.data.time)
+            
+
+            if (keywords.length != 0 ) {
+                if(lastUpdate.textContent != "Showing search results...")
+                {
+                    timeStore = lastUpdate.textContent
+                }
+                lastUpdate.textContent = "Showing search results..."
+            } else {
+                let lastUpdate = document.getElementById("lastUpdateString");
+                console.log('TIMESTORE IS ', timeStore)
+                lastUpdate.textContent = timeStore
+            }
+            
+            
+
+            });
+        }
         
+        // barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);    
         
         //console.log(response.data)
     }
 
-    useEffect(() => {
-        if (searchData) {
-            
-
-        }
-    }, [searchData])
 
     //`https://metatrends.live/api/searchRecentTrendingDataUnique?keywords=${keywords}`
     return (
@@ -164,7 +210,7 @@ function Header(time) {
         
              <div className="bar" onClick={() => {
                     setToggle(!toggle);
-                    barExpand(toggle, newTime, barHeight);               
+                    barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);               
                  }}>
             
                 <Toolbar>
@@ -172,6 +218,7 @@ function Header(time) {
                         <Grid item xs={12} id="titleGrid">
                             <div className="title" onClick={event=>{
                                 event.stopPropagation();
+                                window.location.reload();
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}>
                                 metatrends
@@ -189,8 +236,10 @@ function Header(time) {
                         <Grid item xs={12}>
                             <span id="lastUpdateString" className="date">
                             </span>
+                            <div className="outerSearch">
+                                <input type="text" className="searchBar" placeholder="Search" onClick={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
+                            </div>
                             <div>
-                                <input type="text" onClick={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
 
                                 <DateTimePicker />
                                 <Filter />

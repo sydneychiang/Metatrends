@@ -4,6 +4,11 @@ body{
     /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #8BC63E)
     color-stop(0.5, #EEEEEE))!important; */
     /* background-color: white; */
+    /* min-height: 100vh; */
+}
+
+.adjustFooter {
+    min-height: calc(100vh - 75px - 20px);
 }
 
 

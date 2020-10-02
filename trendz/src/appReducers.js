@@ -7,7 +7,9 @@ const initalState = {
     YOUTUBE: true,
     TWITCH: true,
     date: new Date(),
-    searchData: [],
+    searchData: [{time: "search", data: []}],
+    searchLength: 0,
+    time: new Date(),
 }
 
 export default function appReducers(state = initalState, action) {
@@ -29,8 +31,11 @@ export default function appReducers(state = initalState, action) {
         case 'SET_DATE':
             return { ...state, date:action.payload }
         case 'SET_SEARCH_DATA':
-            return { ...state, searchData:action.payload }
-
+            return { ...state, searchData:[action.payload] }
+        case 'SET_SEARCH_LENGTH':
+            return { ...state, searchLength:action.payload }
+        case 'SET_TIME':
+            return { ...state, time:action.payload }
         default:
             return { ...state }
     }

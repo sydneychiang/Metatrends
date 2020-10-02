@@ -91,9 +91,12 @@
     font-family: "Barlow";
     font-size: 25px;
     color: white;
-    /* z-index: -1; */
     height: 75px;
-    position:relative;
+    relative: absolute;
+    width:100%;
+    /* bottom:0; */
+    /* position: fixed;
+    bottom: 0; */
 
 
 }
@@ -124,6 +127,7 @@
     overflow-y:auto;
     height: 460px;
     width: 50%;
+    min-width: 300px;
     display: none;
     margin: 0 auto;
     background-color:  rgba(177,190,235,100%);
@@ -132,8 +136,29 @@
     z-index: 1;
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
 }
+
+.popupCard{
+  top: 18%;
+  left: calc(50vw/2);
+  display: inline-block;
+  position: fixed;
+}
+
+#test{
+  text-align: center;
+}
+
+/* .slide-up{
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+} */
+
 
 #aboutCard{
     /* background-color: rgba(198,139,223,50%) !important; */
@@ -142,12 +167,13 @@
 
 .cardTitle{
     font-size: 40px;
-    margin-top: 1em;
+    margin-top: 0.6em;
     margin-bottom: 0.9em;
 }
 
 .aboutTitle{
-    margin-top: 0.5em !important;
+    margin-top: 0em !important;
+    margin-bottom: 0.5em !important;
 }
 
 .tosButton{
@@ -171,19 +197,15 @@
 }
 
 .linkedin:hover{
-    opacity: 70%;
+    color: #EDE8F4;
 }
 
-.popupCard{
-    top: 18%;
-    left: 25%;
-    display: inline-block;
-    position: fixed;
-}
+
 
 .minimize{
   cursor:pointer;
   padding-left: 0.6em;
+  /* position: fixed; */
 }
 
 .rotate{
@@ -202,13 +224,48 @@
   transition: ease;
 }
 
-.slide-bottom {
-	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+#aboutX{
+
 }
 
+#aboutX:hover{
+  color: #EDE8F4;
+}
+
+#privacyX:hover{
+  color: #E9EEF7;
+}
 
 
 @-moz-keyframes spin { 50% { -moz-transform: rotate(-180deg); } }
 @-webkit-keyframes spin { 50% { -webkit-transform: rotate(-180deg); } }
 @keyframes spin { 50% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
+
+@media screen and (max-width: 700px) {
+  .card{
+    position: fixed;
+    text-align: center;
+    font-family: "Barlow";
+    font-size: 25px;
+    color: white;
+    border-radius: 20px;
+    overflow-y:auto;
+    height: 460px;
+    width: 300px;
+    display: none;
+    /* margin: 0 auto; */
+    background-color:  rgba(177,190,235,100%);
+    margin-bottom: 1.5em;
+    /* padding: 1em; */
+    z-index: 1;
+    -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+  .popupCard{
+    top: 18%;
+    left: calc(100vw/2 - 175px); 
+    /* calc((100vw/2)-45%); */
+    display: inline-block;
+    position: fixed;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DateTimePicker, KeyboardDateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { DateTimePicker, KeyboardDatePicker, KeyboardDateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import { makeStyles } from '@material-ui/core/styles';
 import './DateTimePicker.css'
@@ -52,7 +52,7 @@ function InlineDateTimePickerDemo(props) {
     return (
         <div className="outerCircle filter" onClick={event => {event.stopPropagation()}}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDateTimePicker
+                <KeyboardDatePicker
                     onClick={event => {event.stopPropagation()}}
                     variant="inline"
                     ampm={false}
@@ -63,7 +63,7 @@ function InlineDateTimePickerDemo(props) {
                         
                     }}
                     onError={console.log}
-                    minDate={new Date("2020-09-17T00:00")}
+                    minDate={new Date("2020-09-25T00:00")}
                     format="MM/dd/yyyy HH:mm"
                     disableFuture
                 />

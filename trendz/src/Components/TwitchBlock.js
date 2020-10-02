@@ -18,8 +18,10 @@ function TwitchBlock(data) {
                     <img src={data.data.thumbnail} alt="" align="left" className="youtubeImage"/> 
                 </div>
                 <span className="mediaType twitch">Twitch</span>
-                <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1} Trend Score:{" " +Math.round(data.data.trendScore * 1000 +5000)}</span>
-                
+                <span className="trend">
+                    <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+                    <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
+                </span>
                 <span className="blockTitle twitchTitle">{data.data.user_name + " is streaming "+data.data.game}  <span className="Handle"> {localTime}</span></span>
                 {/* <span className="description">{data.data.title}</span> */}
             </a>

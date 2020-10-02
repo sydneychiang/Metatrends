@@ -9,7 +9,7 @@ const defaultImage = "https://static.thenounproject.com/png/49479-200.png"
 function RedditBlock(data) {
     const [localTime, setLocalTime] = useState(null);
     useEffect(()=> {
-        setLocalTime(new Date(data.data.created_at).toString().substring(0,10));
+        setLocalTime(new Date(parseInt(data.data.created_at)*1000).toString().substring(0,10));
     }, [])
     const renderImage = () => {
         if (data.data.thumbnail==="nsfw") {
@@ -32,9 +32,11 @@ function RedditBlock(data) {
             {renderImage()}
 
             <span className="mediaType reddit">Reddit</span>
-            <span className="trendingNum">{statusUpdate.update(data.data.status)} #{data.data.position+1}  Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
-            
-    <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span>  <span className="Handle"> · {localTime}</span></span>
+            <span className="trend">
+                <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
+                <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
+            </span>
+            <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span>  <span className="Handle"> · {localTime}</span></span>
             <span className="description">{data.data.title}</span>
             <Divider variant="middle" style={{marginBottom: '15px'}} />
             </a>
