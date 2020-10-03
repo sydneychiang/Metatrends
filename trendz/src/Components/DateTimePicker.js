@@ -46,11 +46,20 @@ function InlineDateTimePickerDemo(props) {
     // let hour = formatDateString(d.getHours());
     // let minute = formatDateString(d. getMinutes());
     useEffect(()=> {
-      dispatch({ type: `SET_DATE`, payload: selectedDate})
+        let check1 = Math.round(new Date().getTime()/10000);
+        let check2 = Math.round(new Date(selectedDate).getTime()/10000)
+        if (check1 !== check2 ) {
+            dispatch({ type: `SET_DATE`, payload: selectedDate})
+            console.log("HAPPENING")
+            console.log(check1)
+            console.log(check2)
+
+        }
+        
     }, [selectedDate])
 
     return (
-        <div className="outerCircle filter" onClick={event => {event.stopPropagation()}}>
+        <div className="outerCircle filter" onMouseDown={event => {event.stopPropagation()}}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                     onClick={event => {event.stopPropagation()}}

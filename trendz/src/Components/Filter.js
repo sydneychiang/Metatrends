@@ -71,7 +71,7 @@ function Filter() {
 
 
     return (
-        <div className="filter"  onClick={event=>{event.stopPropagation()}}>
+        <div className="filter"  onMouseDown={event=>{event.stopPropagation()}}>
             <List dense className={classes.root}>
         {[0, 1, 2, 3, 4, 5, 6].map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;

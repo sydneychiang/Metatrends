@@ -208,7 +208,7 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
     return (
         <div className="root">
         
-             <div className="bar" onClick={() => {
+             <div className="bar" onMouseDown={() => {
                     setToggle(!toggle);
                     barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);               
                  }}>
@@ -237,7 +237,7 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
                             <span id="lastUpdateString" className="date">
                             </span>
                             <div className="outerSearch">
-                                <input type="text" className="searchBar" placeholder="Search" onClick={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
+                                <input type="text" className="searchBar" placeholder="Search" onMouseDown={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
                             </div>
                             <div>
 

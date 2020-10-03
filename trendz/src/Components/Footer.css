@@ -224,6 +224,20 @@
   transition: ease;
 }
 
+
+/* added this so double click on the footer buttons wont highlight it */
+#about {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+#privacy {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
 #aboutX{
 
 }
@@ -235,6 +249,8 @@
 #privacyX:hover{
   color: #E9EEF7;
 }
+
+
 
 
 @-moz-keyframes spin { 50% { -moz-transform: rotate(-180deg); } }
