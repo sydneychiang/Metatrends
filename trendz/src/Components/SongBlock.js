@@ -34,7 +34,6 @@ function SongBlock(data) {
                 <span className="mediaType song">Song</span>
                 <span className="trend">
                     <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
-                    <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
                 </span>
                 <span className="blockTitle">{loadedName}</span>
                 <span className="description">{loadedArtists.map(inner => inner).join(', ')}</span>

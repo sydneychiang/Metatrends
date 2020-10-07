@@ -14,7 +14,7 @@ function MovieBlock(data) {
                 <span className="mediaType movie">Movie</span>
                 <span className="trend">
                     <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
-                    <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
+                    
                 </span>
                 <span className="blockTitle">{data.data.original_title}</span>
                 <span className="description">{data.data.overview}</span>

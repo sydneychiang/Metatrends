@@ -19,10 +19,19 @@
     border-radius: 15px;
 }
 
-
 .innerFilter {
     background: red;
     position: fixed;
+}
+
+.makeStyles-check-4{
+    opacity: 1 !important;
+    background-color: #EEF6F9;
+}
+
+.MuiIconButton-root{
+    opacity: 1 !important;
+    background-color: #EEF6F9;
 }
 
 

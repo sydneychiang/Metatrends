@@ -162,7 +162,7 @@ function Home() {
     const returnFooter = (data) => {
         if (data.length != 0)
         {
-            return <Footer footerOpen={footerOpen} setFooterOpen={setFooterOpen} />
+            return <Footer />
         }
     }
     

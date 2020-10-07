@@ -19,7 +19,6 @@ import { useSelector, useDispatch } from 'react-redux';
 let timeStore = "loading"
 const useStyles = makeStyles((theme) => ({
     arrow: {
-        // textAlign: "center",
         color:"white",
         fontSize: "15px",
         fontFamily: "Comfortaa",
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "1em",
         zIndex: "1",
     },
-
 }));
 
 
@@ -47,11 +45,6 @@ function getDateString(){
 function barExpand(isActive, time, originalBarHeight, setHeaderOpen, footerOpen, setFooterOpen){
     let bar = document.getElementsByClassName("bar")[0];
     let animate = document.getElementById("animate");
-
-    // if (footerOpen){
-    //     setFooterOpen(false);
-    //     console.log(footerOpen);
-    // }
 
     if(isActive){
         //expand
@@ -89,24 +82,6 @@ function updateHeaderString(time){
     }
 }
 
-function scrollFunction() {
-    let bar = document.getElementsByClassName("bar")[0];
-    let title = document.getElementsByClassName("title")[0];
-    let date = document.getElementsByClassName("date")[0];
-
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        bar.style.height = "100px";
-        title.style.paddingTop = "0.4em";
-        title.style.marginBottom = "1em"
-        return true;
-      
-    } else {
-        bar.style.height = "160px";
-        title.style.paddingTop = "0.6em";
-        title.style.marginBottom = "0.3em";
-        return false;
-    }
-}
 
 function openHeader(bar, animate, time, barHeight){
     bar.style.height = "40em";
@@ -131,6 +106,30 @@ function minimizeHeader(bar, animate, barHeight){
     animate.className = "notrotate";
 }
 
+
+function scrollFunction(setToggle, toggle) {
+    let bar = document.getElementsByClassName("bar")[0];
+    let title = document.getElementsByClassName("title")[0];
+    let animate = document.getElementById("animate");
+
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        bar.style.height = "100px";
+        title.style.paddingTop = "0.4em";
+        title.style.marginBottom = "1em";
+        animate.className = "notrotate";
+        setToggle(true);
+        return true;
+      
+    } else {
+        bar.style.height = "160px";
+        title.style.paddingTop = "0.6em";
+        title.style.marginBottom = "0.3em";
+        animate.className = "notrotate";
+        setToggle(true);
+        return false;
+    }
+}
+
 function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -139,9 +138,9 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
 
     // false is original height, true is small height
     const [barHeight, setBarHeight] = useState(false);
-    const [showFilter, setShowFilter] = useState(false);
-    const [searchData, setSearchData] = useState([]);
+
     //toggle is true if header is closed, false if header is open
+    //if toggle is true, one click will open the header
     const [toggle, setToggle] = useState(true);
     const [newTime, setNewTime] = useState(new Date(time));
     useEffect(() => {
@@ -155,19 +154,10 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
     useEffect(()=> {
         updateHeaderString(filterObject.date)
     }, [filterObject.date])
-   
-    
-    let bar = document.getElementsByClassName("bar")[0];
-    let scroll = document.addEventListener("scroll", function(){
-        if(!toggle){
-            setToggle(!toggle);
-            barExpand(toggle, newTime, barHeight, setHeaderOpen);
-        }
-    });
 
     window.onscroll = function() {
-        setBarHeight(scrollFunction());
-        
+        setBarHeight(scrollFunction(setToggle, toggle));
+
     };
 
     async function changeSearch(keywords){
@@ -178,8 +168,6 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
             dispatch({ type: 'SET_SEARCH_DATA', payload: response.data})
             dispatch({ type: 'SET_TIME', payload: response.data.time})
             let lastUpdate = document.getElementById("lastUpdateString");
-            //console.log(response.data.time)
-            
 
             if (keywords.length != 0 ) {
                 if(lastUpdate.textContent != "Showing search results...")
@@ -192,19 +180,10 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
                 console.log('TIMESTORE IS ', timeStore)
                 lastUpdate.textContent = timeStore
             }
-            
-            
-
             });
         }
-        
-        // barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);    
-        
-        //console.log(response.data)
     }
 
-
-    //`https://metatrends.live/api/searchRecentTrendingDataUnique?keywords=${keywords}`
     return (
         <div className="root">
         

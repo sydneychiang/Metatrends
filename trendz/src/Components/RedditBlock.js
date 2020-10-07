@@ -34,7 +34,6 @@ function RedditBlock(data) {
             <span className="mediaType reddit">Reddit</span>
             <span className="trend">
                 <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
-                <span className="trendScoreExplanation">The Trend Score is calculated while taking into account the levels of activity common to each platform.</span>
             </span>
             <span className="blockTitle">{data.data.subreddit} <span className="Handle">@{data.data.author}</span>  <span className="Handle"> · {localTime}</span></span>
             <span className="description">{data.data.title}</span>

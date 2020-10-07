@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './Footer.css'
 
 
-function displayCard(toggle, cardObj, footerOpen, setFooterOpen) {
+function displayCard(toggle, cardObj) {
     if (!toggle) {
         cardObj.style.display = "inline-block";
 
@@ -15,29 +15,70 @@ function displayCard(toggle, cardObj, footerOpen, setFooterOpen) {
 
 
 
-function Footer({ footerOpen, setFooterOpen}) {
+function Footer() {
     let aboutCard = document.getElementById("aboutCard");
     let privacyCard = document.getElementById("privacyCard");
+    let scoreCard = document.getElementById("scoreCard");
     const [aboutToggle, setAboutToggle] = useState(false);
     const [privacyToggle, setPrivacyToggle] = useState(false);
+    const [scoreToggle, setScoreToggle] = useState(false);
 
     return (
 
         <div>
             <div>
                 <div className="popupCard">
-                    <span id="aboutCard" className="card slide-up">
-                        <div id="aboutX" className="notrotate" onClick={() => {
-                            if (privacyToggle) {
-                                setPrivacyToggle(!privacyToggle);
-                                displayCard(privacyToggle, privacyCard, footerOpen, setFooterOpen);
-                            }
+                <span id="scoreCard" className="card slide-up">
+                    <span id="scoreX" className="notrotate" onClick={() => {
+                        if (privacyToggle) {
+                            setPrivacyToggle(!privacyToggle);
+                            displayCard(privacyToggle, privacyCard);
+                        }
+                        if(aboutToggle){
                             setAboutToggle(!aboutToggle);
-                            displayCard(aboutToggle, aboutCard, footerOpen, setFooterOpen);
+                            displayCard(aboutToggle, aboutCard);
+                        }
+                        setScoreToggle(!scoreToggle);
+                        displayCard(scoreToggle, scoreCard);
 
                         }}>
                             x
+                    </span>
+                        <div className="cardTitle scoreTitle">
+                            How is the Trend Score calculated?
                     </div>
+                        <div className="scoreDescription cardDescription">
+                            The Trend Score is calculated by normalizing the levels of activity common to each of the seven sites to allow platform-independent scoring and awards points for the rate that popularity increases relative to other popular content on that platform.
+                            
+                            <span className="icons">
+                                <span className="icon">
+                                    {'\u25b2'} Rising
+                                </span>
+                                <span className="icon">
+                                    {'\u25bc'} Falling
+                                </span>
+                                <span className="icon">
+                                    {'\u25cf'} New
+                                </span>
+                            </span>
+                        </div>
+                    </span>
+                    <span id="aboutCard" className="card slide-up">
+                        <span id="aboutX" className="notrotate" onClick={() => {
+                            if (privacyToggle) {
+                                setPrivacyToggle(!privacyToggle);
+                                displayCard(privacyToggle, privacyCard);
+                            }
+                            if (scoreToggle){
+                                setScoreToggle(!scoreToggle);
+                                displayCard(scoreToggle, scoreCard);
+                            }
+                            setAboutToggle(!aboutToggle);
+                            displayCard(aboutToggle, aboutCard);
+
+                        }}>
+                            x
+                        </span>
                         <div className="cardTitle aboutTitle">
                             About Us
                     </div>
@@ -58,18 +99,22 @@ function Footer({ footerOpen, setFooterOpen}) {
 
                     </span>
                     <span id="privacyCard" className="card slide-up">
-                        <div id="privacyX" className="notrotate" onClick={() => {
+                        <span id="privacyX" className="notrotate" onClick={() => {
                             if (aboutToggle) {
                                 setAboutToggle(!aboutToggle);
-                                displayCard(aboutToggle, aboutCard, footerOpen, setFooterOpen);
+                                displayCard(aboutToggle, aboutCard);
+                            }
+                            if (scoreToggle){
+                                setScoreToggle(!scoreToggle);
+                                displayCard(scoreToggle, scoreCard);
                             }
                             setPrivacyToggle(!privacyToggle);
-                            displayCard(privacyToggle, privacyCard, footerOpen, setFooterOpen);
+                            displayCard(privacyToggle, privacyCard);
                         }}>
                             x
-                    </div>
+                    </span>
                         <div className="cardTitle">
-                            Privacy Policy
+                        <a className="" href="https://drive.google.com/file/d/1ZJEUGy6dj3nntqnp64K0RZHtRjpaYudY/view?usp=sharing" target="_blank">Privacy Policy</a>
                     </div>
                         <div className="privacyDescription cardDescription">
                             MetaTrends will collect and use your personal information to continually update MetaTrends with features and functionalities that will benefit you. Please read our Terms of Service for more information.
@@ -82,28 +127,51 @@ function Footer({ footerOpen, setFooterOpen}) {
 
                 </div>
                 <div className="footer footerAnimationUp">
+                    
                     <span id="about" className="footerBtn" onClick={() => {
                         if (privacyToggle) {
                             setPrivacyToggle(!privacyToggle);
-                            displayCard(privacyToggle, privacyCard, footerOpen, setFooterOpen);
+                            displayCard(privacyToggle, privacyCard);
+                        }
+                        if (scoreToggle){
+                            setScoreToggle(!scoreToggle);
+                            displayCard(scoreToggle, scoreCard);
                         }
                         setAboutToggle(!aboutToggle);
-                        displayCard(aboutToggle, aboutCard, footerOpen, setFooterOpen);
+                        displayCard(aboutToggle, aboutCard);
                     }}>
                         About
-                </span>
+                    </span>
+                    <span id="score" className="footerBtn" onClick={() => {
+                            if (privacyToggle) {
+                                setPrivacyToggle(!privacyToggle);
+                                displayCard(privacyToggle, privacyCard);
+                            }
+                            if (aboutToggle){
+                                setAboutToggle();
+                                displayCard(aboutToggle, aboutCard);
+                            }
+                            setScoreToggle(!scoreToggle);
+                            displayCard(scoreToggle, scoreCard);
+                        }}>
+                            Trend Score Calculations
+                    </span>
                     <span id="privacy" className="footerBtn" onClick={() => {
                         if (aboutToggle) {
                             setAboutToggle(!aboutToggle);
-                            displayCard(aboutToggle, aboutCard, footerOpen, setFooterOpen);
+                            displayCard(aboutToggle, aboutCard);
+                        }
+                        if (scoreToggle){
+                            setScoreToggle(!scoreToggle);
+                            displayCard(scoreToggle, scoreCard);
                         }
                         setPrivacyToggle(!privacyToggle);
-                        displayCard(privacyToggle, privacyCard, footerOpen, setFooterOpen);
+                        displayCard(privacyToggle, privacyCard);
                     }}>
                         Privacy
     
                 </span>
-                    <div>2020</div>
+                    <div id="year">2020</div>
                 </div>
             </div>
         </div>

@@ -75,7 +75,11 @@
 /* Fix sizing inside className= root */
 .bar {
     height: 160px;
-    background: linear-gradient(180deg, #91B7D9 0%, #C1D9D4 100%);
+    /* background: linear-gradient(180deg, #91B7D9 0%, #C1D9D4 100%); */
+    /* background: linear-gradient(180deg, #18B8C7 0%, #80C7E5 100%); */
+    /* background: linear-gradient(180deg, #0799D2 0%, #5AD7F5 100%); */
+    /* background: linear-gradient(180deg, #068DC1 0%, #53C8E4 100%); */
+    background: linear-gradient(180deg, #0577A4 0%, #41A4BC 100%);
     box-shadow: none;
     transition-duration: 0.6s;
     overflow: hidden;

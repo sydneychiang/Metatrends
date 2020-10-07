@@ -85,20 +85,17 @@
 
 
 .footer{
-    background-color: #C1D9D4;
+    /* background-color: #80C7E5; */
+    /* background: linear-gradient(0deg, #18B8C7 0%, #80C7E5 100%); */
+    /* background: linear-gradient(0deg, #0577A4 0%, #41A4BC 100%); */
+    background-color: #4E6477;
     text-align: center;
-    padding-top: 0.8em;
+    padding-top: 0.2em;
     font-family: "Barlow";
     font-size: 25px;
     color: white;
-    height: 75px;
-    relative: absolute;
+    height: 60px;
     width:100%;
-    /* bottom:0; */
-    /* position: fixed;
-    bottom: 0; */
-
-
 }
 
 .footerAnimationUp{
@@ -112,9 +109,16 @@
     margin-right: 2em;
     margin-left: 2em;
     font-family: "Barlow";
+    font-size: 20px;
+}
 
-    /* margin-top: 0.5em;
-    margin-bottom: 0.5em; */
+.footerBtn:hover{
+  color: #D6E4EC;
+  /* opacity: 80%; */
+}
+
+#year{
+  font-size: 20px;
 }
 
 .card{
@@ -122,7 +126,7 @@
     text-align: center;
     font-family: "Barlow";
     font-size: 25px;
-    color: white;
+    color: black;
     border-radius: 20px;
     overflow-y:auto;
     height: 460px;
@@ -130,10 +134,10 @@
     min-width: 300px;
     display: none;
     margin: 0 auto;
-    background-color:  rgba(177,190,235,100%);
     margin-bottom: 1.5em;
     padding: 1em;
     z-index: 1;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -149,58 +153,94 @@
   text-align: center;
 }
 
-/* .slide-up{
-  -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.slide-bottom {
-	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-} */
-
 
 #aboutCard{
-    /* background-color: rgba(198,139,223,50%) !important; */
-    background-color: #C3B2DA !important;
+    background-color: #D4C4B3 !important;
+}
+
+#aboutX{
+  display: inline-block;
+  float: left !important;
+}
+
+#scoreCard{
+    background-color: #D9D0C7 !important;
+}
+
+#scoreX{
+  display: inline-block;
+  float: left !important;
+}
+
+#privacyCard{
+  background-color: #D5DADB;
+}
+
+.tosButton{
+  background-color: #899598;
+  padding: 0.8em;
+  padding-right: 1em;
+  padding-left: 1em;
+  border-radius: 20px;
+  font-size: 22px;
+}
+
+.tosButton:hover{
+  /* opacity: 80%; */
+  background-color: #9AA3A5 !important;
+}
+
+.icon{
+  display: inline-block;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.icons{
+  margin-top: 2em;
+  text-align: center
+
+}
+
+
+
+#aboutX:hover{
+  color: #8F8A85;
+}
+
+#privacyX:hover{
+  color: #8F8A85;
+}
+
+#scoreX:hover{
+  color: #8F8A85;
 }
 
 .cardTitle{
     font-size: 40px;
-    margin-top: 0.6em;
+    margin-top: 1.4em;
     margin-bottom: 0.9em;
 }
 
 .aboutTitle{
-    margin-top: 0em !important;
+    margin-top: 0.8em !important;
     margin-bottom: 0.5em !important;
 }
 
-.tosButton{
-    background-color: rgba(128,149,206,70%);
-    padding: 0.8em;
-    padding-right: 1em;
-    padding-left: 1em;
-    border-radius: 20px;
-    font-size: 22px;
+.scoreTitle{
+  margin-top: 1.3em;
 }
 
-.tosButton:hover{
-    opacity: 70%;
-}
 
 .cardDescription{
     font-size: 22px;
     margin-bottom:2em;
     line-height: 35px;
-
 }
 
 .linkedin:hover{
-    color: #EDE8F4;
+    color:gray;
 }
-
-
 
 .minimize{
   cursor:pointer;
@@ -217,7 +257,7 @@
 
 .notrotate{
   cursor:pointer;
-  padding-left: 0.8em;
+  margin-left: 0.8em;
   text-align: left;
   font-family: "Comfortaa";
   transition-duration: 0.6s;
@@ -237,22 +277,6 @@
   -ms-user-select: none;
 }
 
-
-#aboutX{
-
-}
-
-#aboutX:hover{
-  color: #EDE8F4;
-}
-
-#privacyX:hover{
-  color: #E9EEF7;
-}
-
-
-
-
 @-moz-keyframes spin { 50% { -moz-transform: rotate(-180deg); } }
 @-webkit-keyframes spin { 50% { -webkit-transform: rotate(-180deg); } }
 @keyframes spin { 50% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
@@ -269,10 +293,8 @@
     height: 460px;
     width: 300px;
     display: none;
-    /* margin: 0 auto; */
-    background-color:  rgba(177,190,235,100%);
+    /* background-color:  rgba(177,190,235,100%); */
     margin-bottom: 1.5em;
-    /* padding: 1em; */
     z-index: 1;
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -280,8 +302,22 @@
   .popupCard{
     top: 18%;
     left: calc(100vw/2 - 175px); 
-    /* calc((100vw/2)-45%); */
     display: inline-block;
     position: fixed;
+  }
+
+  .footer{
+    padding-top:0em;
+    height: 50px;
+  }
+
+  .footerBtn{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-size: 16px;
+  }
+
+  #year{
+    font-size: 16px;
   }
 }

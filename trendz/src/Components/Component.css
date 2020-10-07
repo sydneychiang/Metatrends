@@ -52,7 +52,7 @@ span {
     cursor: pointer; 
     -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    /* z-index: 0; */
+    /* z-index: -1000; */
     position: relative;
 }
 
@@ -71,19 +71,26 @@ span {
 
 .mediaType {
     font-size: 14px;
-    color: #669693;
     display: inline-block;
+    font-family: "Barlow";
 }
 
 .trend{
     float:right;
 }
 
+.vertAlign {
+    color: #727372;
+    vertical-align: middle;  
+    height: 1.7em !important;
+    width: 1.7em !important;  
+}
+
 .trendingNum {
     font-size: 12px;
     color: #464745;
     float: right;
-    /* z-index: -2; */
+    z-index: -2;
 }
 
 .trendScoreExplanation{
@@ -91,20 +98,26 @@ span {
     position: fixed;
     font-size: 12px;
     /* z-index: 3; */
-    background: rgb(212, 212, 212);
+    background: #727372;
     border-radius: 10px;
     max-width: 150px;
     float: right;
     text-align: center;
     padding: 1em;
     /* margin-top: 1.2em; */
-    color: black;
+    color: white;
     
 }
 
-.trendingNum:hover + .trendScoreExplanation{
-    display: block;
+.icons{
+    text-align: left;
 }
+
+.trendingNum:hover + .trendScoreExplanation{
+    display: inline-block;
+    z-index: 100;
+}
+
 
 
 .blockTitle {
@@ -162,26 +175,30 @@ span {
 }
 
 .reddit{
-    color: #669693;
+    color: #1F2B9F;
 }
 
 .movie{
-    color: #CD3764;
+    color: #A72F2F;
 }
 
 .tv{
-    color: #52B7D7;
+    color: #C77413;
 }
 
 .twitterPost {
-    color: #4C77C9;
+    color: #BD116E;
 }
 
 .song{
-    color: #B1945C;
+    color: #0E8D95;
 
 }
 
 .twitch{
-    color: #75A192;
+    color: #328F07;
+}
+
+.youtube{
+    color: #6F0B92;
 }
