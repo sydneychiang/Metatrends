@@ -88,7 +88,8 @@
     /* background-color: #80C7E5; */
     /* background: linear-gradient(0deg, #18B8C7 0%, #80C7E5 100%); */
     /* background: linear-gradient(0deg, #0577A4 0%, #41A4BC 100%); */
-    background-color: #4E6477;
+    background: linear-gradient(0deg, #0577A4 0%, #41A4BC 100%);
+    /* background-color: #4E6477; */
     text-align: center;
     padding-top: 0.2em;
     font-family: "Barlow";
@@ -126,12 +127,13 @@
     text-align: center;
     font-family: "Barlow";
     font-size: 25px;
-    color: black;
+    color: white;
     border-radius: 20px;
     overflow-y:auto;
     height: 460px;
     width: 50%;
     min-width: 300px;
+    background-color: white;
     display: none;
     margin: 0 auto;
     margin-bottom: 1.5em;
@@ -155,7 +157,7 @@
 
 
 #aboutCard{
-    background-color: #D4C4B3 !important;
+    background-color: #D95B72 !important;
 }
 
 #aboutX{
@@ -164,7 +166,7 @@
 }
 
 #scoreCard{
-    background-color: #D9D0C7 !important;
+    background-color: #0F4459 !important;
 }
 
 #scoreX{
@@ -173,7 +175,7 @@
 }
 
 #privacyCard{
-  background-color: #D5DADB;
+  background-color: #4E6D91;
 }
 
 .tosButton{
@@ -201,8 +203,6 @@
   text-align: center
 
 }
-
-
 
 #aboutX:hover{
   color: #8F8A85;

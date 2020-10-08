@@ -6,10 +6,12 @@ import './Footer.css'
 function displayCard(toggle, cardObj) {
     if (!toggle) {
         cardObj.style.display = "inline-block";
+        document.body.style.overflow = "hidden";
 
     }
     else if (toggle) {
         cardObj.style.display = "none";
+        document.body.style.overflow = "auto";
     }
 }
 
