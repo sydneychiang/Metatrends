@@ -14,7 +14,6 @@ import './Home.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../Components/Footer'
-import Test from '../Components/test';
 
 
 
@@ -173,7 +172,6 @@ function Home() {
         <div >
             <div className="adjustFooter" >
                 <div id="spacer" className={classes.spacer}></div>
-                <Test />
                 {loading ? <WaveLoading />: null}
             
                 {filterObject.searchLength !== 0 ? displaySearchData(filterObject.searchData).map(item =>(item)) : displayData(data).map(item =>(item))}

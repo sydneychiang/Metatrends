@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 auto',
     },
     check: {
-      color: "white!important",
+      color: "white !important",
       opacity: "1 !important",
 
     },
