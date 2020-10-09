@@ -30,7 +30,6 @@ function TwitchBlock(data) {
             
         </div>
 
-
     )
 }
 

@@ -206,15 +206,18 @@
 }
 
 #aboutX:hover{
-  color: #8F8A85;
+  /* opacity: 80%; */
+  color: #E0E6EE;
 }
 
 #privacyX:hover{
-  color: #8F8A85;
+  opacity: 80%;
+  /* color: #8F8A85; */
 }
 
 #scoreX:hover{
-  color: #8F8A85;
+  /* opacity: 80%; */
+  color: #E9EBF1;
 }
 
 .cardTitle{
@@ -232,15 +235,14 @@
   margin-top: 1.3em;
 }
 
-
 .cardDescription{
     font-size: 22px;
-    margin-bottom:2em;
+    /* margin-bottom:2em; */
     line-height: 35px;
 }
 
 .linkedin:hover{
-    color:gray;
+    color: #E0E6EE;
 }
 
 .minimize{

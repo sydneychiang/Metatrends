@@ -47,14 +47,7 @@ function Test() {
               <ListItemText id={labelId}  primary={<span>{`${platforms[value]}`}</span>}/>
               <ListItemSecondaryAction>
                 <Checkbox
-                  
-                  edge="end"
-                  onClick={event => {
-                    event.stopPropagation();
-                    handleToggle(value); 
-                  }}
                   checked={checked.indexOf(value) !== -1}
-                  inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemSecondaryAction>
             </ListItem>
