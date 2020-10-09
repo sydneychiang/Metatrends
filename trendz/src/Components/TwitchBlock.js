@@ -23,7 +23,7 @@ function TwitchBlock(data) {
                     <span className="trendingNum">{statusUpdate.update(data.data.status)} {data.data.position} Trend Score:{" " +Math.round(data.data.trendScore * 1000 + 5000)}</span>
                     
                 </span>
-                <span className="blockTitle twitchTitle">{data.data.user_name + " is streaming "+ data.data.game == null ? "":data.data.game}  <span className="Handle"> {localTime}</span></span>
+                <span className="blockTitle twitchTitle">{data.data.user_name + " is streaming "+ (data.data.game == null ? "":data.data.game)}  <span className="Handle"> {localTime}</span></span>
                 {/* <span className="description">{data.data.title}</span> */}
             </a>
             <Divider variant="middle" style={{marginBottom: '15px'}} />

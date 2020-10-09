@@ -25,6 +25,7 @@
 }
 
 
+
 .PrivateSwitchBase-input-9 {
     opacity: 1 !important;
     display: none;
@@ -79,3 +80,8 @@
 .jss4 {
     opacity: 1 !important;
 }
+
+.MuiCheckbox-root {
+    opacity: 1 !important;
+}
+
