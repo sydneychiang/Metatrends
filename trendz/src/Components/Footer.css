@@ -157,7 +157,7 @@
 
 
 #aboutCard{
-    background-color: #D95B72 !important;
+    background-color: #668DBA !important;
 }
 
 #aboutX{
@@ -165,8 +165,9 @@
   float: left !important;
 }
 
+/* TREND SCORE CARD */
 #scoreCard{
-    background-color: #0F4459 !important;
+    background-color: #676990 !important;
 }
 
 #scoreX{
@@ -175,11 +176,11 @@
 }
 
 #privacyCard{
-  background-color: #4E6D91;
+  background-color: #A28DB4;
 }
 
 .tosButton{
-  background-color: #899598;
+  background-color: #766783;
   padding: 0.8em;
   padding-right: 1em;
   padding-left: 1em;
@@ -189,7 +190,7 @@
 
 .tosButton:hover{
   /* opacity: 80%; */
-  background-color: #9AA3A5 !important;
+  background-color: #7D708B !important;
 }
 
 .icon{

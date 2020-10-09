@@ -30,15 +30,12 @@
     display: none;
 }
 
-.MuiIconButton-root{
-    opacity: 1 !important;
-    background-color: #EEF6F9;
-}
-
 
 
 .input[type="checkbox"]{
     color: green;
+    opacity: 1 !important;
+
 
 }
 
@@ -67,4 +64,18 @@
 .makeStyles-check-4{
     opacity: 1 !important;
     background-color: #EEF6F9;
+}
+
+
+.MuiIconButton-root{
+    opacity: 1 !important;
+    background-color: #EEF6F9;
+}
+
+.jss9 {
+    opacity: 1 !important;
+}
+
+.jss4 {
+    opacity: 1 !important;
 }
