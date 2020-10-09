@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Comfortaa:wght@500&display=swap');
+
 body{
     /* background-color: #FFFAF6; */
     /* background-color: #fcfcf7; */
@@ -8,9 +10,15 @@ body{
 }
 
 .adjustFooter {
-    min-height: calc(100vh - 75px - 20px);
+    min-height: calc(100vh - 65px);
 }
 
+.noResult {
+    text-align: center; 
+    color: gray; 
+    font-family: "Barlow";
+    margin-top: 1.5em;
+}
 
 .filterButton{
     background: #A3A5AB;
@@ -18,17 +26,11 @@ body{
     color: white;
     height: 2em;
     padding-left: 0.5em;
-    /* padding-right: 2em; */
     text-align: left;
     font-family: "Merriweather";
     border: none;
     width: 160px;
     margin: 0 auto;
-    /* opacity: 30%; */
-
-    /* take this out, just here for testing */
-    /* margin-right: 100px; */
-
 }
 
 

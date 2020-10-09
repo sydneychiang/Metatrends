@@ -94,7 +94,6 @@ function Filter() {
           );
         })}
       </List>
-      {/* <button onClick={event => {console.log(checked)}}>check array</button> */}
         </div>
     )
 }

@@ -32,7 +32,6 @@ function updateHeaderString(lastUpdate, time){
         lastUpdate.textContent = "Showing search results..."
     }
     else{
-        console.log("time and today are", time, " ---------", today)
         lastUpdate.textContent = "Viewing data from " + Math.round(update) + " minutes ago";
     }
 }

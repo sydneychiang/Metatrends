@@ -43,9 +43,6 @@ function InlineDateTimePickerDemo(props) {
         let check2 = Math.round(new Date(selectedDate).getTime()/10000)
         if (check1 !== check2 ) {
             dispatch({ type: `SET_DATE`, payload: selectedDate})
-            console.log("HAPPENING")
-            console.log(check1)
-            console.log(check2)
 
         }
         

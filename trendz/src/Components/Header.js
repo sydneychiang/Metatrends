@@ -157,7 +157,7 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
 
     window.onscroll = function() {
         setBarHeight(scrollFunction(setToggle, toggle));
-
+        document.getElementById('searchBar').blur();
     };
 
     async function changeSearch(keywords){
@@ -177,7 +177,6 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
                 lastUpdate.textContent = "Showing search results..."
             } else {
                 let lastUpdate = document.getElementById("lastUpdateString");
-                console.log('TIMESTORE IS ', timeStore)
                 lastUpdate.textContent = timeStore
             }
             });
@@ -195,8 +194,9 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
                 <Toolbar>
                     <Grid container spacing={0} >
                         <Grid item xs={12} id="titleGrid">
-                            <div className="title" onClick={event=>{
-                                event.stopPropagation();
+                            <div className="title" 
+                            onMouseDown={event => {event.stopPropagation();}}
+                            onClick={event=>{
                                 window.location.reload();
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}>
@@ -216,7 +216,7 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
                             <span id="lastUpdateString" className="date">
                             </span>
                             <div className="outerSearch">
-                                <input type="text" className="searchBar" placeholder="Search" onMouseDown={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
+                                <input id="searchBar" type="text" className="searchBar" placeholder="Search" onMouseDown={event=>{event.stopPropagation()}} onChange={event => {changeSearch(event.target.value)}}/> 
                             </div>
                             <div>
 

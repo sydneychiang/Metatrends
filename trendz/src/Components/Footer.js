@@ -89,9 +89,9 @@ function Footer() {
                         <div>
                                 <br />
                                 Team members consist of
-                            <a className="linkedin" href="https://www.linkedin.com/in/amar-sharma-1994bb175/"><strong> Amar, </strong></a>
-                                <a className="linkedin" href="https://www.linkedin.com/in/timothy-zhu/"><strong>Tim, </strong></a>
-                                <a className="linkedin" href="https://www.linkedin.com/in/godugu-rishi/"><strong>Rishi, </strong></a>
+                            <a className="linkedin" href="https://www.linkedin.com/in/amar-sharma-1994bb175/" target="_blank"><strong> Amar, </strong></a>
+                                <a className="linkedin" href="https://www.linkedin.com/in/timothy-zhu/" target="_blank"><strong>Tim, </strong></a>
+                                <a className="linkedin" href="https://www.linkedin.com/in/godugu-rishi/" target="_blank"><strong>Rishi, </strong></a>
                                 and
                             <a className="linkedin" href="https://www.linkedin.com/in/sydneychiang/" target="_blank"><strong> Sydney</strong></a>
                                 . Feel free to click on our names and connect with us on LinkedIn!
