@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
     check: {
       color: "white!important",
-      // opacity: "80%",
+      opacity: "1 !important",
 
     },
 

@@ -180,7 +180,7 @@
 }
 
 .tosButton{
-  /* background-color: white; */
+  background-color: #779397;
   padding: 0.8em;
   padding-right: 1em;
   padding-left: 1em;
@@ -189,8 +189,8 @@
 }
 
 .tosButton:hover{
-  opacity: 80%;
-  /* background-color: #7D708B !important; */
+  /* opacity: 80%; */
+  background-color: #82989C !important;
 }
 
 .icon{
@@ -239,6 +239,10 @@
     font-size: 22px;
     /* margin-bottom:2em; */
     line-height: 35px;
+}
+
+.privacyDescription{
+  margin-bottom: 2em;
 }
 
 .linkedin:hover{

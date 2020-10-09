@@ -47,6 +47,7 @@ function Test() {
               <ListItemText id={labelId}  primary={<span>{`${platforms[value]}`}</span>}/>
               <ListItemSecondaryAction>
                 <Checkbox
+                    style={{color: "black !important"}}
                   checked={checked.indexOf(value) !== -1}
                 />
               </ListItemSecondaryAction>
