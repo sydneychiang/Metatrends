@@ -283,6 +283,12 @@
   -ms-user-select: none;
 }
 
+#score {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 @-moz-keyframes spin { 50% { -moz-transform: rotate(-180deg); } }
 @-webkit-keyframes spin { 50% { -webkit-transform: rotate(-180deg); } }
 @keyframes spin { 50% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
