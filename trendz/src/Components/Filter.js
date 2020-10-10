@@ -42,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 function Filter() {
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -64,11 +66,32 @@ function Filter() {
       setChecked(newChecked);
       dispatch({ type: `SET_${platforms[value].toUpperCase()}`, payload: !filterObject[`${platforms[value].toUpperCase()}`] })
     };
+
+
+
+    const handleToggleOnly = (value) => {
+      // const currentIndex = checked.indexOf(value);
+      const newChecked = [value];
+  
+      // if (currentIndex === -1) {
+      //   newChecked.push(value);
+      // } else {
+      //   newChecked.splice(currentIndex, 1);
+      // }
+      console.log(value);
+      setChecked(newChecked);
+      for (let i = 0; i < platforms.length; i++) {
+        if (i != value) {
+          dispatch({ type: `SET_${platforms[i].toUpperCase()}`, payload: false })
+        } else {
+          dispatch({ type: `SET_${platforms[i].toUpperCase()}`, payload: false })
+        }
+      }
+    };
   
     useEffect(()=> {
         setChecked([0,1,2,3,4,5, 6])
     }, [])
-
 
     return (
         <div className="filter"  onMouseDown={event=>{event.stopPropagation()}}>
@@ -76,9 +99,13 @@ function Filter() {
         {[0, 1, 2, 3, 4, 5, 6].map((value) => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
-            <ListItem key={value} button>
-              <ListItemText id={labelId}  primary={<span className="textStyle">{`${platforms[value]}`}</span>}/>
-              <ListItemSecondaryAction>
+            <ListItem key={value} button onClick={event=> {
+              handleToggleOnly(value); 
+
+
+            }}>
+              <ListItemText id={labelId}  tabIndex="-1" primary={<span className="textStyle">{`${platforms[value]}`}</span>}/>
+              <ListItemSecondaryAction tabIndex="-1">
                 <Checkbox
                   className = {classes.check}
                   edge="end"

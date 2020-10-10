@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 function getDateString(){
     let d = new Date()
     const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
@@ -39,8 +38,6 @@ function getDateString(){
     const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
     return `${mo} ${da}, ${ye}`
 }
-
-
 
 function barExpand(isActive, time, originalBarHeight, setHeaderOpen, footerOpen, setFooterOpen){
     let bar = document.getElementsByClassName("bar")[0];
@@ -59,7 +56,6 @@ function barExpand(isActive, time, originalBarHeight, setHeaderOpen, footerOpen,
         setHeaderOpen(false);
     }
 }
-
 
 function updateHeaderString(time){
     let lastUpdate = document.getElementById("lastUpdateString")
@@ -119,7 +115,6 @@ function scrollFunction(setToggle, toggle) {
         animate.className = "notrotate";
         setToggle(true);
         return true;
-      
     } else {
         bar.style.height = "160px";
         title.style.paddingTop = "0.6em";
@@ -159,6 +154,25 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
         setBarHeight(scrollFunction(setToggle, toggle));
         document.getElementById('searchBar').blur();
     };
+
+    // let bar = document.getElementsByClassName("bar")[0];
+    // let bar = document.body;
+    // console.log(bar);
+    // if (bar){
+    //     bar.addEventListener('keydown', function(event) {
+    //         if (event.keyCode == 9) {
+    //             setToggle(false);
+    //             barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);               
+    //         }
+    //     });
+    // }
+
+    document.body.addEventListener('keydown', function(event){
+        if (event.keyCode == 9) {
+            setToggle(false);
+            barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);   
+        }
+    });
 
     async function changeSearch(keywords){
         if (keywords.length < 50) {

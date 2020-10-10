@@ -173,10 +173,14 @@ function Footer() {
                         Privacy
     
                 </span>
+                <span>
+                    <a href="https://www.buymeacoffee.com/Metatrends" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{width: "200px"}}/></a>
+                </span>
                     <div id="year">2020</div>
                 </div>
             </div>
         </div>
+        
     )
 }
 
