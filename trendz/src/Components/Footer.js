@@ -96,6 +96,10 @@ function Footer() {
                             <a className="linkedin" href="https://www.linkedin.com/in/sydneychiang/" target="_blank"><strong> Sydney</strong></a>
                                 . Feel free to click on our names and connect with us on LinkedIn!
                         </div>
+                        <div>
+                            <a href="https://www.buymeacoffee.com/Metatrends" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{width: "8em", marginTop:"10px"}}/></a>
+
+                        </div>
 
                         </div>
 
@@ -174,7 +178,7 @@ function Footer() {
     
                 </span>
                 <span>
-                    <a href="https://www.buymeacoffee.com/Metatrends" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{width: "200px"}}/></a>
+                   
                 </span>
                     <div id="year">2020</div>
                 </div>

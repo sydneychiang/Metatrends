@@ -84,7 +84,7 @@ function Filter() {
         if (i != value) {
           dispatch({ type: `SET_${platforms[i].toUpperCase()}`, payload: false })
         } else {
-          dispatch({ type: `SET_${platforms[i].toUpperCase()}`, payload: false })
+          dispatch({ type: `SET_${platforms[i].toUpperCase()}`, payload: true })
         }
       }
     };
@@ -104,8 +104,8 @@ function Filter() {
 
 
             }}>
-              <ListItemText id={labelId}  tabIndex="-1" primary={<span className="textStyle">{`${platforms[value]}`}</span>}/>
-              <ListItemSecondaryAction tabIndex="-1">
+              <ListItemText id={labelId}  primary={<span className="textStyle">{`${platforms[value]}`}</span>}/>
+              <ListItemSecondaryAction >
                 <Checkbox
                   className = {classes.check}
                   edge="end"

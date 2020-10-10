@@ -169,8 +169,9 @@ function Header({time, headerOpen, setHeaderOpen, footerOpen, setFooterOpen}) {
 
     document.body.addEventListener('keydown', function(event){
         if (event.keyCode == 9) {
-            setToggle(false);
-            barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);   
+            //setToggle(false);
+            //barExpand(toggle, newTime, barHeight, setHeaderOpen, footerOpen, setFooterOpen);   
+            event.preventDefault()
         }
     });
 
