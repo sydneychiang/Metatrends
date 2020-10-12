@@ -1,4 +1,5 @@
 <img src="/screenshots/logo.jpg" width="48">
+
 ## 📍 Introduction & Motivation
 + Metatrends is an api-based content ranking and trend aggregation system **viewable at https://metatrends.live**
 + This project exists to allow people to stay up to date on whats trending more easily.
