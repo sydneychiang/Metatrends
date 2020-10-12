@@ -1,12 +1,9 @@
-
-<div align="left">
-![logo](/screenshots/logo.jpg | width=100)
-
+<img src="/screenshots/logo.jpg" width="48">
 ## 📍 Introduction & Motivation
 + Metatrends is an api-based content ranking and trend aggregation system **viewable at https://metatrends.live**
 + This project exists to allow people to stay up to date on whats trending more easily.
 ## Screenshots
-![image 1](/screenshots/screenshot1.jpg | width=100) ![image 2](/screenshots/screenshot2.jpg | width=100) ![image 3](/screenshots/screenshot3.jpg | width=100)
+<img src="/screenshots/screenshot1.jpg" width="250"> <img src="/screenshots/screenshot2.jpg" width="250"> <img src="/screenshots/screenshot3.jpg" width="250">
 ## Support
 Metatrends is managed by UCI students. If you would like to support us via feedback, advice, etc, please consider emailing habitapp.co@gmail.com for more information.
 ## Tech/frameworks used
