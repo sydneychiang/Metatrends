@@ -47,7 +47,7 @@ Metatrends features a text search through our database (information dating back 
 + **What we plan to improve** 
 	+ We plan on moving from a normal text index to a full text search/atlas search (eventually) to improve search relevancy to terms.
 ### ☑️ Filters 
-Metatrends features a text search through our database (information dating back to 9/25/2020) on relevant fields specific to each platform. 
+Metatrends' filter feature allows users to easily filter out platforms that they do not want to see on our page. 
 + **How to use the filters**
 	+ The filter’s default state leaves all the platforms selected. 
 	+ Clicking the title of the platform will uncheck everything besides the platform clicked. 
@@ -58,7 +58,7 @@ Metatrends features a text search through our database (information dating back 
 	+ The filter is a collection of platforms and their checkboxes found inside the header of the site. 
 	+ Clicking anywhere on the header (except for the word "Metatrends") will expand and reveal the filter.
 ### 📊 Charts
-Metatrends features a text search through our database (information dating back to 9/25/2020) on relevant fields specific to each platform. 
+Metatrends features a charts section using trends data that we have collected. 
 + **What it does**
 	+ These charts display interesting data that our site has collected. We implemented a chart per platform, displaying some of the most engaging content that our site has seen. If you have an idea for a chart you'd like to see, send us a request at habitapp.co@gmail.com!
 + **How it's done** 
@@ -66,22 +66,22 @@ Metatrends features a text search through our database (information dating back 
 + **Where to find it**
 	+ The charts can be found by pressing the circular button on the bottom right of the screen.
 ### 📆 ****Datepicker****
-Metatrends features a text search through our database (information dating back to 9/25/2020) on relevant fields specific to each platform. 
+Metatrends features a date selection prompt that allows people to look back at trends in the past (up to 9/24/20).
 + **What it does**
-	+ The datepicker allows users to select a date on the calendar to see what the website looked like at that point in time. A specific time can be inputted by typing in the text field as well.
+	+ The datepicker allows users to select a date on the calendar to see what the website looked like at that point in time. A specific time can be inputted by typing in the text field as well for more granular selection.
 + **How it's done** 
 	+ The datepicker is from Material-UI with custom CSS. Changing the date sends a request with that date to the server for results.
 + **Where to find it**
 	+ The datepicker is found beneath the search bar inside the header.
 ## Development
-To start the server run in /server
-To start host the client site run in /trendz
++ To start the server run in /server *port 9000*
++ To start host the client site run in /trendz *port 3000*
 ```
 npm install
 npm start
 ```
 ## Build
-For build files run in /trendz/
+For build files run in /trendz
 ```
 npm run build
 ```
